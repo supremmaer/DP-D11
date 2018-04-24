@@ -1,10 +1,13 @@
 
 package domain;
 
+import java.util.Collection;
+
 import javax.persistence.Access;
 import javax.persistence.AccessType;
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
+import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.validation.Valid;
 import javax.validation.constraints.NotNull;
@@ -73,7 +76,10 @@ public class Actor extends DomainEntity {
 
 	//Relationships
 
-	private UserAccount	userAccount;
+	private UserAccount			userAccount;
+	private Collection<Folder>	folders;
+	private Collection<Message>	messagesSent;
+	private Collection<Message>	messagesReceived;
 
 
 	@NotNull
@@ -87,4 +93,33 @@ public class Actor extends DomainEntity {
 		this.userAccount = userAccount;
 	}
 
+	@OneToMany
+	@NotNull
+	public Collection<Folder> getFolders() {
+		return this.folders;
+	}
+
+	public void setFolders(final Collection<Folder> folders) {
+		this.folders = folders;
+	}
+
+	@OneToMany
+	@NotNull
+	public Collection<Message> getMessageSent() {
+		return this.messagesSent;
+	}
+
+	@OneToMany
+	@NotNull
+	public Collection<Message> getMessageReceived() {
+		return this.messagesReceived;
+	}
+
+	public void setMessagesSent(final Collection<Message> messagesSent) {
+		this.messagesSent = messagesSent;
+	}
+
+	public void setMessagesReceived(final Collection<Message> messagesReceived) {
+		this.messagesReceived = messagesReceived;
+	}
 }

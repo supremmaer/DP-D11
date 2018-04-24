@@ -84,6 +84,7 @@ public class CreditCard extends DomainEntity {
 	//Relationships
 
 	private Collection<Newspaper>	newspapers;
+	private Collection<Volume>		volumes;
 
 
 	@ManyToMany
@@ -94,6 +95,16 @@ public class CreditCard extends DomainEntity {
 
 	public void setNewspapers(final Collection<Newspaper> newspapers) {
 		this.newspapers = newspapers;
+	}
+
+	@ManyToMany
+	@NotNull
+	public Collection<Volume> getVolumes() {
+		return this.volumes;
+	}
+
+	public void setVolumes(final Collection<Volume> volumes) {
+		this.volumes = volumes;
 	}
 
 }
