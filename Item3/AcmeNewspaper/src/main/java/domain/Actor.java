@@ -103,13 +103,13 @@ public class Actor extends DomainEntity {
 		this.folders = folders;
 	}
 
-	@OneToMany
+	@OneToMany(mappedBy = "sender")
 	@NotNull
 	public Collection<Message> getMessageSent() {
 		return this.messagesSent;
 	}
 
-	@OneToMany
+	@OneToMany(mappedBy = "recipient")
 	@NotNull
 	public Collection<Message> getMessageReceived() {
 		return this.messagesReceived;
