@@ -122,11 +122,11 @@
 				<ref bean="trashboxFolderAdministrator1" />
 			</list>
 		</property>
-		<property name="MessagesSent">
+		<property name="messagesSent">
 			<list>
 			</list>
 		</property>
-		<property name="MessagesReceived">
+		<property name="messagesReceived">
 			<list>
 			</list>
 		</property>
@@ -195,13 +195,13 @@
 				<ref bean="trashboxFolderUser1" />
 			</list>
 		</property>
-		<property name="MessagesSent">
+		<property name="messagesSent">
 			<list>
 				<ref bean="message1" />
 				<ref bean="message3" />
 			</list>
 		</property>
-		<property name="MessagesReceived">
+		<property name="messagesReceived">
 			<list>
 				<ref bean="message2" />
 
@@ -257,12 +257,12 @@
 				<ref bean="trashboxFolderUser2" />
 			</list>
 		</property>
-		<property name="MessagesSent">
+		<property name="messagesSent">
 			<list>
 				<ref bean="message2" />
 			</list>
 		</property>
-		<property name="MessagesReceived">
+		<property name="messagesReceived">
 			<list>
 				<ref bean="message1" />
 
@@ -320,11 +320,11 @@
 				<ref bean="trashboxFolderUser3" />
 			</list>
 		</property>
-		<property name="MessagesSent">
+		<property name="messagesSent">
 			<list>
 			</list>
 		</property>
-		<property name="MessagesReceived">
+		<property name="messagesReceived">
 			<list>
 			</list>
 		</property>
@@ -349,12 +349,12 @@
 				<ref bean="trashboxFolderAgent1" />
 			</list>
 		</property>
-		<property name="MessagesSent">
+		<property name="messagesSent">
 			<list>
 
 			</list>
 		</property>
-		<property name="MessagesReceived">
+		<property name="messagesReceived">
 			<list>
 				<ref bean="message3" />
 			</list>
@@ -378,11 +378,11 @@
 				<ref bean="trashboxFolderAgent2" />
 			</list>
 		</property>
-		<property name="MessagesSent">
+		<property name="messagesSent">
 			<list>
 			</list>
 		</property>
-		<property name="MessagesReceived">
+		<property name="messagesReceived">
 			<list>
 			</list>
 		</property>
@@ -701,7 +701,7 @@
 			</list>	
 		</property>
 		<property name="agent">
-			<null></null>
+			<null/>
 		</property>
 	</bean>
 	<bean id="creditCard2" class="domain.CreditCard">
@@ -722,7 +722,7 @@
 			</list>	
 		</property>
 		<property name="agent">
-			<null></null>
+			<null/>
 		</property>
 	</bean>
 	<bean id="creditCard3" class="domain.CreditCard">
@@ -808,11 +808,11 @@
 				<ref bean="trashboxFolderCustomer1" />
 			</list>
 		</property>
-		<property name="MessagesSent">
+		<property name="messagesSent">
 			<list>
 			</list>
 		</property>
-		<property name="MessagesReceived">
+		<property name="messagesReceived">
 			<list>
 			</list>
 		</property>
