@@ -11,7 +11,7 @@ import org.hibernate.validator.constraints.URL;
 
 @Entity
 @Access(AccessType.PROPERTY)
-public class Adversiment extends DomainEntity {
+public class Advertisement extends DomainEntity {
 
 	private String	title;
 	private String	url;
