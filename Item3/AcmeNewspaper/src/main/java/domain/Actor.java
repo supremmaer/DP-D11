@@ -82,8 +82,8 @@ public class Actor extends DomainEntity {
 	private Collection<Message>	messagesReceived;
 
 
-	@NotNull
 	@Valid
+	@NotNull
 	@OneToOne(cascade = CascadeType.ALL, optional = false)
 	public UserAccount getUserAccount() {
 		return this.userAccount;
