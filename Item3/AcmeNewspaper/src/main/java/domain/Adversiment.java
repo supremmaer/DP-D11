@@ -15,6 +15,7 @@ public class Adversiment extends DomainEntity {
 
 	private String	title;
 	private String	url;
+	private boolean	taboo;
 
 
 	@NotBlank
@@ -28,12 +29,21 @@ public class Adversiment extends DomainEntity {
 		return this.url;
 	}
 
+	@NotNull
+	public boolean isTaboo() {
+		return this.taboo;
+	}
+
 	public void setTitle(final String title) {
 		this.title = title;
 	}
 
 	public void setUrl(final String url) {
 		this.url = url;
+	}
+
+	public void setTaboo(final boolean taboo) {
+		this.taboo = taboo;
 	}
 
 
