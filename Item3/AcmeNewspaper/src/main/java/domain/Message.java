@@ -1,7 +1,6 @@
 
 package domain;
 
-import java.util.Collection;
 import java.util.Date;
 
 import javax.persistence.Access;
@@ -70,29 +69,29 @@ public class Message extends DomainEntity {
 
 	//Relationships
 
-	private Actor				actor;
-	private Collection<Actor>	actors;
+	private Actor	sender;
+	private Actor	recipient;
 
 
 	@NotNull
 	@Valid
 	@ManyToOne(optional = false)
-	public Actor getActor() {
-		return this.actor;
+	public Actor getSender() {
+		return this.sender;
 	}
 
-	public void setActor(final Actor actor) {
-		this.actor = actor;
+	public void setSender(final Actor sender) {
+		this.sender = sender;
 	}
 
 	@NotEmpty
-	@ManyToOne
-	public Collection<Actor> getActors() {
-		return this.actors;
+	@ManyToOne(optional = false)
+	public Actor getRecipient() {
+		return this.recipient;
 	}
 
-	public void setActors(final Collection<Actor> actors) {
-		this.actors = actors;
+	public void setRecipient(final Actor recipient) {
+		this.recipient = recipient;
 	}
 
 }

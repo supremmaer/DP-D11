@@ -112,6 +112,24 @@
 		<property name="emailAddress" value="ponsavi@acme.org" />
 		<property name="phoneNumber" value="656343000" />
 		<property name="postalAddress" value="Calle Fontenla, 2" />
+		<property name="folders">
+			<list>
+				<ref bean="rootFolderAdministrator1" />
+				<ref bean="spamFolderAdministrator1" />
+				<ref bean="inboxFolderAdministrator1" />
+				<ref bean="outboxFolderAdministrator1" />
+				<ref bean="notificationboxFolderAdministrator1" />
+				<ref bean="trashboxFolderAdministrator1" />
+			</list>
+		</property>
+		<property name="MessagesSent">
+			<list>
+			</list>
+		</property>
+		<property name="MessagesReceived">
+			<list>
+			</list>
+		</property>
 	</bean>
 	
 	<!-- Users -->	
@@ -167,6 +185,28 @@
 				<ref bean="followUp5"/>
 			</list>	
 		</property>
+		<property name="folders">
+			<list>
+				<ref bean="rootFolderUser1" />
+				<ref bean="spamFolderUser1" />
+				<ref bean="inboxFolderUser1" />
+				<ref bean="outboxFolderUser1" />
+				<ref bean="notificationboxFolderUser1" />
+				<ref bean="trashboxFolderUser1" />
+			</list>
+		</property>
+		<property name="MessagesSent">
+			<list>
+				<ref bean="message1" />
+				<ref bean="message3" />
+			</list>
+		</property>
+		<property name="MessagesReceived">
+			<list>
+				<ref bean="message2" />
+
+			</list>
+		</property>
 	</bean>
 	
 	<bean id="user2" class="domain.User">
@@ -206,6 +246,27 @@
 			<ref bean="followUp6"/>
 			
 			</list>	
+		</property>
+		<property name="folders">
+			<list>
+				<ref bean="rootFolderUser2" />
+				<ref bean="spamFolderUser2" />
+				<ref bean="inboxFolderUser2" />
+				<ref bean="outboxFolderUser2" />
+				<ref bean="notificationboxFolderUser2" />
+				<ref bean="trashboxFolderUser2" />
+			</list>
+		</property>
+		<property name="MessagesSent">
+			<list>
+				<ref bean="message2" />
+			</list>
+		</property>
+		<property name="MessagesReceived">
+			<list>
+				<ref bean="message1" />
+
+			</list>
 		</property>
 	</bean>
 	<bean id="user3" class="domain.User">
@@ -249,6 +310,24 @@
 			
 			</list>	
 		</property>
+		<property name="folders">
+			<list>
+				<ref bean="rootFolderUser3" />
+				<ref bean="spamFolderUser3" />
+				<ref bean="inboxFolderUser3" />
+				<ref bean="outboxFolderUser3" />
+				<ref bean="notificationboxFolderUser3" />
+				<ref bean="trashboxFolderUser3" />
+			</list>
+		</property>
+		<property name="MessagesSent">
+			<list>
+			</list>
+		</property>
+		<property name="MessagesReceived">
+			<list>
+			</list>
+		</property>
 	</bean>
 	
 		<!-- Agent -->
@@ -260,6 +339,26 @@
 		<property name="emailAddress" value="ponsavi@acme.org" />
 		<property name="phoneNumber" value="656343000" />
 		<property name="postalAddress" value="Calle Fontenla, 2" />
+		<property name="folders">
+			<list>
+				<ref bean="rootFolderAgent1" />
+				<ref bean="spamFolderAgent1" />
+				<ref bean="inboxFolderAgent1" />
+				<ref bean="outboxFolderAgent1" />
+				<ref bean="notificationboxFolderAgent1" />
+				<ref bean="trashboxFolderAgent1" />
+			</list>
+		</property>
+		<property name="MessagesSent">
+			<list>
+
+			</list>
+		</property>
+		<property name="MessagesReceived">
+			<list>
+				<ref bean="message3" />
+			</list>
+		</property>
 	</bean>
 		
 	<bean id="agent2" class="domain.Agent">
@@ -269,7 +368,26 @@
 		<property name="emailAddress" value="ponsavi@acme.org" />
 		<property name="phoneNumber" value="656343000" />
 		<property name="postalAddress" value="Calle Fontenla, 2" />
+		<property name="folders">
+			<list>
+				<ref bean="rootFolderAgent2" />
+				<ref bean="spamFolderAgent2" />
+				<ref bean="inboxFolderAgent2" />
+				<ref bean="outboxFolderAgent2" />
+				<ref bean="notificationboxFolderAgent2" />
+				<ref bean="trashboxFolderAgent2" />
+			</list>
+		</property>
+		<property name="MessagesSent">
+			<list>
+			</list>
+		</property>
+		<property name="MessagesReceived">
+			<list>
+			</list>
+		</property>
 	</bean>
+
 
 		<!-- Article -->	
 	<bean id="article1" class="domain.Article">
@@ -582,6 +700,9 @@
 			
 			</list>	
 		</property>
+		<property name="agent">
+			<null></null>
+		</property>
 	</bean>
 	<bean id="creditCard2" class="domain.CreditCard">
 		<property name="holderName" value="Señor que esta cansado de rellenar el populate" />
@@ -599,6 +720,9 @@
 			<list>
 			
 			</list>	
+		</property>
+		<property name="agent">
+			<null></null>
 		</property>
 	</bean>
 	<bean id="creditCard3" class="domain.CreditCard">
@@ -618,6 +742,7 @@
 				<ref bean="volume1"/>
 			</list>	
 		</property>
+		<property name="agent" ref="agent1" />
 	</bean>
 	<!-- Volume -->
 	<bean id="volume1" class="domain.Volume">
@@ -648,11 +773,13 @@
 
 	</bean>
 	
-	<!--Adversiment-->
+	<!-- Advertisement-->
 	
-		<bean id="adversiment1" class="domain.Adversiment">
+		<bean id="advertisement1" class="domain.Advertisement">
 		<property name="title" value="Pepón" />
-		<property name="url" value="Samper Villagrán" />
+		<property name="banner" value="http://www.us.es/hereyouhaveanattachment" />
+		<property name="targetPage" value="http://www.us.es/hereyouhaveanattachment" />
+		<property name="taboo" value="false" />
 		<property name="agent" ref="agent1" />
 		<property name="creditCard" ref="creditCard3" />
 	</bean>
@@ -671,6 +798,24 @@
 			</list>	
 		</property>
 		<property name="userAccount" ref="userAccount3" />
+		<property name="folders">
+			<list>
+				<ref bean="rootFolderCustomer1" />
+				<ref bean="spamFolderCustomer1" />
+				<ref bean="inboxFolderCustomer1" />
+				<ref bean="outboxFolderCustomer1" />
+				<ref bean="notificationboxFolderCustomer1" />
+				<ref bean="trashboxFolderCustomer1" />
+			</list>
+		</property>
+		<property name="MessagesSent">
+			<list>
+			</list>
+		</property>
+		<property name="MessagesReceived">
+			<list>
+			</list>
+		</property>
 	</bean>
 
 	
@@ -940,5 +1085,627 @@
 					<ref bean="article20"/>
 				</list>	
 			</property>
+	</bean>
+	
+	<!-- Folder -->
+
+	<bean id="rootFolderAdministrator1" class="domain.Folder">
+		<property name="name" value="Root" />
+		<property name="folders">
+			<list>
+				<ref bean="spamFolderAdministrator1" />
+				<ref bean="inboxFolderAdministrator1" />
+				<ref bean="outboxFolderAdministrator1" />
+				<ref bean="notificationboxFolderAdministrator1" />
+				<ref bean="trashboxFolderAdministrator1" />
+			</list>
+		</property>
+		<property name="messages">
+			<list>
+			</list>
+		</property>
+	</bean>
+
+	<bean id="inboxFolderAdministrator1" class="domain.Folder">
+		<property name="name" value="Inbox" />
+		
+		<property name="parent" ref="rootFolderAdministrator1" />
+		<property name="folders">
+			<list>
+			</list>
+		</property>
+		<property name="messages">
+			<list>
+			</list>
+		</property>
+	</bean>
+	<bean id="outboxFolderAdministrator1" class="domain.Folder">
+		<property name="name" value="Outbox" />
+		
+		<property name="parent" ref="rootFolderAdministrator1" />
+		<property name="folders">
+			<list>
+			</list>
+		</property>
+		<property name="messages">
+			<list>
+			</list>
+		</property>
+	</bean>
+	<bean id="notificationboxFolderAdministrator1" class="domain.Folder">
+		<property name="name" value="Notification Box" />
+		
+		<property name="parent" ref="rootFolderAdministrator1" />
+		<property name="folders">
+			<list>
+			</list>
+		</property>
+		<property name="messages">
+			<list>
+			</list>
+		</property>
+	</bean>
+	<bean id="trashboxFolderAdministrator1" class="domain.Folder">
+		<property name="name" value="TrashBox" />
+		
+		<property name="parent" ref="rootFolderAdministrator1" />
+		<property name="folders">
+			<list>
+			</list>
+		</property>
+		<property name="messages">
+			<list>
+			</list>
+		</property>
+	</bean>
+	<bean id="spamFolderAdministrator1" class="domain.Folder">
+		<property name="name" value="Spam" />
+		
+		<property name="parent" ref="rootFolderAdministrator1" />
+		<property name="folders">
+			<list>
+			</list>
+		</property>
+		<property name="messages">
+			<list>
+			</list>
+		</property>
+	</bean>
+	
+	<bean id="rootFolderUser1" class="domain.Folder">
+		<property name="name" value="Root" />
+		
+		<property name="folders">
+			<list>
+				<ref bean="spamFolderUser1" />
+				<ref bean="inboxFolderUser1" />
+				<ref bean="outboxFolderUser1" />
+				<ref bean="notificationboxFolderUser1" />
+				<ref bean="trashboxFolderUser1" />
+			</list>
+		</property>
+		<property name="messages">
+			<list>
+			</list>
+		</property>
+	</bean>
+
+	<bean id="inboxFolderUser1" class="domain.Folder">
+		<property name="name" value="Inbox" />
+		
+		<property name="parent" ref="rootFolderUser1" />
+		<property name="folders">
+			<list>
+			</list>
+		</property>
+		<property name="messages">
+			<list>
+				<ref bean="message2" />
+			</list>
+		</property>
+	</bean>
+	<bean id="outboxFolderUser1" class="domain.Folder">
+		<property name="name" value="Outbox" />
+		
+		<property name="parent" ref="rootFolderUser1" />
+		<property name="folders">
+			<list>
+			</list>
+		</property>
+		<property name="messages">
+			<list>
+				<ref bean="message1" />
+				<ref bean="message3" />
+			</list>
+		</property>
+	</bean>
+	<bean id="notificationboxFolderUser1" class="domain.Folder">
+		<property name="name" value="Notification Box" />
+		
+		<property name="parent" ref="rootFolderUser1" />
+		<property name="folders">
+			<list>
+			</list>
+		</property>
+		<property name="messages">
+			<list>
+			</list>
+		</property>
+	</bean>
+	<bean id="trashboxFolderUser1" class="domain.Folder">
+		<property name="name" value="TrashBox" />
+		
+		<property name="parent" ref="rootFolderUser1" />
+		<property name="folders">
+			<list>
+			</list>
+		</property>
+		<property name="messages">
+			<list>
+			</list>
+		</property>
+	</bean>
+	<bean id="spamFolderUser1" class="domain.Folder">
+		<property name="name" value="Spam" />
+		
+		<property name="parent" ref="rootFolderUser1" />
+		<property name="folders">
+			<list>
+			</list>
+		</property>
+		<property name="messages">
+			<list>
+			</list>
+		</property>
+	</bean>
+
+	<bean id="rootFolderUser2" class="domain.Folder">
+		<property name="name" value="Root" />
+		
+		<property name="folders">
+			<list>
+				<ref bean="spamFolderUser2" />
+				<ref bean="inboxFolderUser2" />
+				<ref bean="outboxFolderUser2" />
+				<ref bean="notificationboxFolderUser2" />
+				<ref bean="trashboxFolderUser2" />
+			</list>
+		</property>
+		<property name="messages">
+			<list>
+			</list>
+		</property>
+	</bean>
+
+	<bean id="inboxFolderUser2" class="domain.Folder">
+		<property name="name" value="Inbox" />
+		
+		<property name="parent" ref="rootFolderUser2" />
+		<property name="folders">
+			<list>
+			</list>
+		</property>
+		<property name="messages">
+			<list>
+				<ref bean="message1" />
+
+			</list>
+		</property>
+	</bean>
+	<bean id="outboxFolderUser2" class="domain.Folder">
+		<property name="name" value="Outbox" />
+		
+		<property name="parent" ref="rootFolderUser2" />
+		<property name="folders">
+			<list>
+			</list>
+		</property>
+		<property name="messages">
+			<list>
+				<ref bean="message2" />
+			</list>
+		</property>
+	</bean>
+	<bean id="notificationboxFolderUser2" class="domain.Folder">
+		<property name="name" value="Notification Box" />
+		
+		<property name="parent" ref="rootFolderUser2" />
+		<property name="folders">
+			<list>
+			</list>
+		</property>
+		<property name="messages">
+			<list>
+			</list>
+		</property>
+	</bean>
+	<bean id="trashboxFolderUser2" class="domain.Folder">
+		<property name="name" value="TrashBox" />
+		
+		<property name="parent" ref="rootFolderUser2" />
+		<property name="folders">
+			<list>
+			</list>
+		</property>
+		<property name="messages">
+			<list>
+			</list>
+		</property>
+	</bean>
+	<bean id="spamFolderUser2" class="domain.Folder">
+		<property name="name" value="Spam" />
+		
+		<property name="parent" ref="rootFolderUser2" />
+		<property name="folders">
+			<list>
+			</list>
+		</property>
+		<property name="messages">
+			<list>
+			</list>
+		</property>
+	</bean>
+
+	<bean id="rootFolderUser3" class="domain.Folder">
+		<property name="name" value="Root" />
+		
+		<property name="folders">
+			<list>
+				<ref bean="spamFolderUser3" />
+				<ref bean="inboxFolderUser3" />
+				<ref bean="outboxFolderUser3" />
+				<ref bean="notificationboxFolderUser3" />
+				<ref bean="trashboxFolderUser3" />
+			</list>
+		</property>
+		<property name="messages">
+			<list>
+			</list>
+		</property>
+	</bean>
+
+	<bean id="inboxFolderUser3" class="domain.Folder">
+		<property name="name" value="Inbox" />
+		
+		<property name="parent" ref="rootFolderUser3" />
+		<property name="folders">
+			<list>
+			</list>
+		</property>
+		<property name="messages">
+			<list>
+			</list>
+		</property>
+	</bean>
+	<bean id="outboxFolderUser3" class="domain.Folder">
+		<property name="name" value="Outbox" />
+		
+		<property name="parent" ref="rootFolderUser3" />
+		<property name="folders">
+			<list>
+			</list>
+		</property>
+		<property name="messages">
+			<list>
+			</list>
+		</property>
+	</bean>
+	<bean id="notificationboxFolderUser3" class="domain.Folder">
+		<property name="name" value="Notification Box" />
+		
+		<property name="parent" ref="rootFolderUser3" />
+		<property name="folders">
+			<list>
+			</list>
+		</property>
+		<property name="messages">
+			<list>
+			</list>
+		</property>
+	</bean>
+	<bean id="trashboxFolderUser3" class="domain.Folder">
+		<property name="name" value="TrashBox" />
+		
+		<property name="parent" ref="rootFolderUser3" />
+		<property name="folders">
+			<list>
+			</list>
+		</property>
+		<property name="messages">
+			<list>
+			</list>
+		</property>
+	</bean>
+	<bean id="spamFolderUser3" class="domain.Folder">
+		<property name="name" value="Spam" />
+		
+		<property name="parent" ref="rootFolderUser3" />
+		<property name="folders">
+			<list>
+			</list>
+		</property>
+		<property name="messages">
+			<list>
+			</list>
+		</property>
+	</bean>
+
+	<bean id="rootFolderCustomer1" class="domain.Folder">
+		<property name="name" value="Root" />
+		
+		<property name="folders">
+			<list>
+				<ref bean="spamFolderCustomer1" />
+				<ref bean="inboxFolderCustomer1" />
+				<ref bean="outboxFolderCustomer1" />
+				<ref bean="notificationboxFolderCustomer1" />
+				<ref bean="trashboxFolderCustomer1" />
+			</list>
+		</property>
+		<property name="messages">
+			<list>
+			</list>
+		</property>
+	</bean>
+
+	<bean id="inboxFolderCustomer1" class="domain.Folder">
+		<property name="name" value="Inbox" />
+		
+		<property name="parent" ref="rootFolderCustomer1" />
+		<property name="folders">
+			<list>
+			</list>
+		</property>
+		<property name="messages">
+			<list>
+			</list>
+		</property>
+	</bean>
+	<bean id="outboxFolderCustomer1" class="domain.Folder">
+		<property name="name" value="Outbox" />
+		
+		<property name="parent" ref="rootFolderCustomer1" />
+		<property name="folders">
+			<list>
+			</list>
+		</property>
+		<property name="messages">
+			<list>
+			</list>
+		</property>
+	</bean>
+	<bean id="notificationboxFolderCustomer1" class="domain.Folder">
+		<property name="name" value="Notification Box" />
+		
+		<property name="parent" ref="rootFolderCustomer1" />
+		<property name="folders">
+			<list>
+			</list>
+		</property>
+		<property name="messages">
+			<list>
+			</list>
+		</property>
+	</bean>
+	<bean id="trashboxFolderCustomer1" class="domain.Folder">
+		<property name="name" value="TrashBox" />
+		
+		<property name="parent" ref="rootFolderCustomer1" />
+		<property name="folders">
+			<list>
+			</list>
+		</property>
+		<property name="messages">
+			<list>
+			</list>
+		</property>
+	</bean>
+	<bean id="spamFolderCustomer1" class="domain.Folder">
+		<property name="name" value="Spam" />
+		
+		<property name="parent" ref="rootFolderCustomer1" />
+		<property name="folders">
+			<list>
+			</list>
+		</property>
+		<property name="messages">
+			<list>
+			</list>
+		</property>
+	</bean>
+	
+	<bean id="rootFolderAgent1" class="domain.Folder">
+		<property name="name" value="Root" />
+		
+		<property name="folders">
+			<list>
+				<ref bean="spamFolderAgent1" />
+				<ref bean="inboxFolderAgent1" />
+				<ref bean="outboxFolderAgent1" />
+				<ref bean="notificationboxFolderAgent1" />
+				<ref bean="trashboxFolderAgent1" />
+			</list>
+		</property>
+		<property name="messages">
+			<list>
+			</list>
+		</property>
+	</bean>
+
+	<bean id="inboxFolderAgent1" class="domain.Folder">
+		<property name="name" value="Inbox" />
+		
+		<property name="parent" ref="rootFolderAgent1" />
+		<property name="folders">
+			<list>
+			</list>
+		</property>
+		<property name="messages">
+			<list>
+				<ref bean="message3" />
+			</list>
+		</property>
+	</bean>
+	<bean id="outboxFolderAgent1" class="domain.Folder">
+		<property name="name" value="Outbox" />
+		
+		<property name="parent" ref="rootFolderAgent1" />
+		<property name="folders">
+			<list>
+			</list>
+		</property>
+		<property name="messages">
+			<list>
+			</list>
+		</property>
+	</bean>
+	<bean id="notificationboxFolderAgent1" class="domain.Folder">
+		<property name="name" value="Notification Box" />
+		
+		<property name="parent" ref="rootFolderAgent1" />
+		<property name="folders">
+			<list>
+			</list>
+		</property>
+		<property name="messages">
+			<list>
+			</list>
+		</property>
+	</bean>
+	<bean id="trashboxFolderAgent1" class="domain.Folder">
+		<property name="name" value="TrashBox" />
+		
+		<property name="parent" ref="rootFolderAgent1" />
+		<property name="folders">
+			<list>
+			</list>
+		</property>
+		<property name="messages">
+			<list>
+			</list>
+		</property>
+	</bean>
+	<bean id="spamFolderAgent1" class="domain.Folder">
+		<property name="name" value="Spam" />
+		
+		<property name="parent" ref="rootFolderAgent1" />
+		<property name="folders">
+			<list>
+			</list>
+		</property>
+		<property name="messages">
+			<list>
+			</list>
+		</property>
+	</bean>
+	
+	<bean id="rootFolderAgent2" class="domain.Folder">
+		<property name="name" value="Root" />
+		
+		<property name="folders">
+			<list>
+				<ref bean="spamFolderAgent2" />
+				<ref bean="inboxFolderAgent2" />
+				<ref bean="outboxFolderAgent2" />
+				<ref bean="notificationboxFolderAgent2" />
+				<ref bean="trashboxFolderAgent2" />
+			</list>
+		</property>
+		<property name="messages">
+			<list>
+			</list>
+		</property>
+	</bean>
+
+	<bean id="inboxFolderAgent2" class="domain.Folder">
+		<property name="name" value="Inbox" />
+		
+		<property name="parent" ref="rootFolderAgent2" />
+		<property name="folders">
+			<list>
+			</list>
+		</property>
+		<property name="messages">
+			<list>
+			</list>
+		</property>
+	</bean>
+	<bean id="outboxFolderAgent2" class="domain.Folder">
+		<property name="name" value="Outbox" />
+		
+		<property name="parent" ref="rootFolderAgent2" />
+		<property name="folders">
+			<list>
+			</list>
+		</property>
+		<property name="messages">
+			<list>
+			</list>
+		</property>
+	</bean>
+	<bean id="notificationboxFolderAgent2" class="domain.Folder">
+		<property name="name" value="Notification Box" />
+		
+		<property name="parent" ref="rootFolderAgent2" />
+		<property name="folders">
+			<list>
+			</list>
+		</property>
+		<property name="messages">
+			<list>
+			</list>
+		</property>
+	</bean>
+	<bean id="trashboxFolderAgent2" class="domain.Folder">
+		<property name="name" value="TrashBox" />
+		
+		<property name="parent" ref="rootFolderAgent2" />
+		<property name="folders">
+			<list>
+			</list>
+		</property>
+		<property name="messages">
+			<list>
+			</list>
+		</property>
+	</bean>
+	<bean id="spamFolderAgent2" class="domain.Folder">
+		<property name="name" value="Spam" />
+		
+		<property name="parent" ref="rootFolderAgent2" />
+		<property name="folders">
+			<list>
+			</list>
+		</property>
+		<property name="messages">
+			<list>
+			</list>
+		</property>
+	</bean>
+
+	<!-- Message -->
+	<bean id="message1" class="domain.Message">
+		<property name="moment" value="2017/10/01 19:00" />
+		<property name="subject" value="Asunto1" />
+		<property name="body" value="cuerpo del mensaje 1." />
+		<property name="priority" value="NEUTRAL" />
+		<property name="sender" ref="user1" />
+		<property name="recipient" ref="user2" />
+	</bean>
+	<bean id="message2" class="domain.Message">
+		<property name="moment" value="2017/10/01 19:00" />
+		<property name="subject" value="Asunto1" />
+		<property name="body" value="cuerpo del mensaje 2." />
+		<property name="priority" value="NEUTRAL" />
+		<property name="sender" ref="user2" />
+		<property name="recipient" ref="user1" />
+	</bean>
+	<bean id="message3" class="domain.Message">
+		<property name="moment" value="2017/10/01 19:00" />
+		<property name="subject" value="Asunto1" />
+		<property name="body" value="cuerpo del mensaje 3." />
+		<property name="priority" value="NEUTRAL" />
+		<property name="sender" ref="user1" />
+		<property name="recipient" ref="agent1" />
 	</bean>
 </beans>

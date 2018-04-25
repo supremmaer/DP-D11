@@ -7,6 +7,7 @@ import javax.persistence.Access;
 import javax.persistence.AccessType;
 import javax.persistence.Entity;
 import javax.persistence.ManyToMany;
+import javax.persistence.ManyToOne;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Pattern;
 
@@ -85,6 +86,7 @@ public class CreditCard extends DomainEntity {
 
 	private Collection<Newspaper>	newspapers;
 	private Collection<Volume>		volumes;
+	private Agent					agent;
 
 
 	@ManyToMany
@@ -105,6 +107,15 @@ public class CreditCard extends DomainEntity {
 
 	public void setVolumes(final Collection<Volume> volumes) {
 		this.volumes = volumes;
+	}
+
+	@ManyToOne(optional = true)
+	public Agent getAgent() {
+		return this.agent;
+	}
+
+	public void setAgent(final Agent agent) {
+		this.agent = agent;
 	}
 
 }

@@ -4,6 +4,7 @@ package domain;
 import javax.persistence.Access;
 import javax.persistence.AccessType;
 import javax.persistence.Entity;
+import javax.persistence.ManyToOne;
 import javax.validation.constraints.NotNull;
 
 import org.hibernate.validator.constraints.NotBlank;
@@ -14,7 +15,8 @@ import org.hibernate.validator.constraints.URL;
 public class Advertisement extends DomainEntity {
 
 	private String	title;
-	private String	url;
+	private String	banner;
+	private String	targetPage;
 	private boolean	taboo;
 
 
@@ -25,8 +27,14 @@ public class Advertisement extends DomainEntity {
 
 	@URL
 	@NotBlank
-	public String getUrl() {
-		return this.url;
+	public String getBanner() {
+		return this.banner;
+	}
+
+	@URL
+	@NotBlank
+	public String getTargetPage() {
+		return this.targetPage;
 	}
 
 	@NotNull
@@ -38,8 +46,12 @@ public class Advertisement extends DomainEntity {
 		this.title = title;
 	}
 
-	public void setUrl(final String url) {
-		this.url = url;
+	public void setBanner(final String banner) {
+		this.banner = banner;
+	}
+
+	public void setTargetPage(final String targetPage) {
+		this.targetPage = targetPage;
 	}
 
 	public void setTaboo(final boolean taboo) {
@@ -53,12 +65,12 @@ public class Advertisement extends DomainEntity {
 	private CreditCard	creditCard;
 
 
-	@NotNull
+	@ManyToOne(optional = false)
 	public Agent getAgent() {
 		return this.agent;
 	}
 
-	@NotNull
+	@ManyToOne(optional = false)
 	public CreditCard getCreditCard() {
 		return this.creditCard;
 	}

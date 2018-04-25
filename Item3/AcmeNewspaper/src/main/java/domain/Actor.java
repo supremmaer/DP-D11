@@ -105,13 +105,13 @@ public class Actor extends DomainEntity {
 
 	@OneToMany(mappedBy = "sender")
 	@NotNull
-	public Collection<Message> getMessageSent() {
+	public Collection<Message> getMessagesSent() {
 		return this.messagesSent;
 	}
 
 	@OneToMany(mappedBy = "recipient")
 	@NotNull
-	public Collection<Message> getMessageReceived() {
+	public Collection<Message> getMessagesReceived() {
 		return this.messagesReceived;
 	}
 

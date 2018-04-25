@@ -7,6 +7,7 @@ import javax.persistence.Access;
 import javax.persistence.AccessType;
 import javax.persistence.Entity;
 import javax.persistence.ManyToMany;
+import javax.persistence.ManyToOne;
 import javax.validation.constraints.NotNull;
 
 import org.hibernate.validator.constraints.NotBlank;
@@ -35,6 +36,18 @@ public class Volume extends DomainEntity {
 		return this.year;
 	}
 
+	public void setTitle(final String title) {
+		this.title = title;
+	}
+
+	public void setDescription(final String description) {
+		this.description = description;
+	}
+
+	public void setYear(final Integer year) {
+		this.year = year;
+	}
+
 
 	//Relationships
 
@@ -42,7 +55,7 @@ public class Volume extends DomainEntity {
 	private Collection<Newspaper>	newspapers;
 
 
-	@NotNull
+	@ManyToOne(optional = false)
 	public User getUser() {
 		return this.user;
 	}
