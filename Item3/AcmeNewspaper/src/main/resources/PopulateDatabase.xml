@@ -79,6 +79,30 @@
 		</property>
 	</bean>
 	
+	<bean id="userAccount6" class="security.UserAccount">
+		<property name="username" value="agent1" />
+		<property name="password" value="83a87fd756ab57199c0bb6d5e11168cb" />
+		<property name="authorities">
+			<list>
+				<bean class="security.Authority">
+					<property name="authority" value="AGENT" />
+				</bean>
+			</list>
+		</property>
+	</bean>
+	
+	<bean id="userAccount7" class="security.UserAccount">
+		<property name="username" value="agent2" />
+		<property name="password" value="b1a4a6b01cc297d4677c4ca6656e14d7" />
+		<property name="authorities">
+			<list>
+				<bean class="security.Authority">
+					<property name="authority" value="AGENT" />
+				</bean>
+			</list>
+		</property>
+	</bean>
+	
 	
 	<!-- Admin -->	
 	<bean id="admin" class="domain.Administrator">
@@ -227,8 +251,26 @@
 		</property>
 	</bean>
 	
-	
-	
+		<!-- Agent -->
+		
+	<bean id="agent1" class="domain.Agent">
+		<property name="userAccount" ref="userAccount6" />
+		<property name="name" value="Agent1" />
+		<property name="surname" value="Samper Villagrán" />
+		<property name="emailAddress" value="ponsavi@acme.org" />
+		<property name="phoneNumber" value="656343000" />
+		<property name="postalAddress" value="Calle Fontenla, 2" />
+	</bean>
+		
+	<bean id="agent2" class="domain.Agent">
+		<property name="userAccount" ref="userAccount7" />
+		<property name="name" value="Agent2" />
+		<property name="surname" value="Samper Villagrán" />
+		<property name="emailAddress" value="ponsavi@acme.org" />
+		<property name="phoneNumber" value="656343000" />
+		<property name="postalAddress" value="Calle Fontenla, 2" />
+	</bean>
+
 		<!-- Article -->	
 	<bean id="article1" class="domain.Article">
 		<property name="title" value="articulo1" />
@@ -535,6 +577,11 @@
 				<ref bean="newspaper3"/>
 			</list>	
 		</property>
+		<property name="volumes">
+			<list>
+			
+			</list>	
+		</property>
 	</bean>
 	<bean id="creditCard2" class="domain.CreditCard">
 		<property name="holderName" value="Señor que esta cansado de rellenar el populate" />
@@ -548,6 +595,66 @@
 			
 			</list>	
 		</property>
+		<property name="volumes">
+			<list>
+			
+			</list>	
+		</property>
+	</bean>
+	<bean id="creditCard3" class="domain.CreditCard">
+		<property name="holderName" value="Francisco Perez" />
+		<property name="brandName" value="Visa" />
+		<property name="number" value="4532013067246621" />
+		<property name="expirationMonth" value="10" />
+		<property name="expirationYear" value="2020" />
+		<property name="CVV" value="124" />
+		<property name="newspapers">
+			<list>
+			
+			</list>	
+		</property>
+		<property name="volumes">
+			<list>
+				<ref bean="volume1"/>
+			</list>	
+		</property>
+	</bean>
+	<!-- Volume -->
+	<bean id="volume1" class="domain.Volume">
+		<property name="title" value="Flores" />
+		<property name="description" value="Muchas cosas bonitas" />
+		<property name="year" value="2018" />
+		<property name="user" ref="user1" />
+		<property name="newspapers">
+			<list>
+				<ref bean="newspaper1"/>
+				<ref bean="newspaper2"/>
+				<ref bean="newspaper3"/>
+			</list>	
+		</property>
+
+	</bean>
+	<bean id="volume2" class="domain.Volume">
+		<property name="title" value="Porn" />
+		<property name="description" value="Sex, sex and more sex ban" />
+		<property name="year" value="2017" />
+		<property name="user" ref="user1" />
+		<property name="newspapers">
+			<list>
+				<ref bean="newspaper1"/>
+				<ref bean="newspaper4"/>
+			</list>	
+		</property>
+
+	</bean>
+	
+	<!--Adversiment-->
+	
+		<bean id="adversiment1" class="domain.Adversiment">
+		<property name="title" value="Pepón" />
+		<property name="url" value="Samper Villagrán" />
+		<property name="agent" ref="agent1" />
+		<property name="creditCard" ref="creditCard3" />
 	</bean>
 		
 	<!-- Customer -->	
