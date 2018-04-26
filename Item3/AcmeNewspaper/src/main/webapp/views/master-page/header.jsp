@@ -95,6 +95,9 @@
 					<security:authorize access="hasRole('CUSTOMER')">
 					<li><a href="customer/creditCard/create.do"><spring:message code="master.page.creditcard.create" /></a></li>
 					</security:authorize>	
+					<security:authorize access="hasRole('AGENT')">
+					<li><a href="agent/creditCard/create.do"><spring:message code="master.page.creditcard.create" /></a></li>
+					</security:authorize>
 					<li><a href="j_spring_security_logout"><spring:message code="master.page.logout" /> </a></li>
 				</ul>
 			</li>

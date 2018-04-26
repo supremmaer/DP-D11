@@ -11,9 +11,11 @@ import org.springframework.stereotype.Service;
 import org.springframework.util.Assert;
 
 import repositories.CreditCardRepository;
+import domain.Agent;
 import domain.CreditCard;
 import domain.Customer;
 import domain.Newspaper;
+import domain.Volume;
 import forms.SubscribeForm;
 
 @Service
@@ -43,10 +45,13 @@ public class CreditCardService {
 		CreditCard result;
 
 		final Collection<Newspaper> newspapers = new ArrayList<Newspaper>();
+		final Collection<Volume> volumes = new ArrayList<Volume>();
 
 		result = new CreditCard();
 
 		result.setNewspapers(newspapers);
+		result.setVolumes(volumes);
+		result.setAgent(null);
 
 		return result;
 	}
@@ -66,17 +71,30 @@ public class CreditCardService {
 	}
 
 	public CreditCard save(final CreditCard creditCard) {
-		CreditCard result;
+		final CreditCard result = creditCard;
+
 		Collection<CreditCard> aux;
 		Customer customer;
 		customer = (Customer) this.actorService.findByPrincipal();
-		result = this.creditCardRepository.save(creditCard);
+		this.creditCardRepository.save(result);
 
 		//añado la creditCard al customer
 		aux = customer.getCreditCard();
 		aux.add(result);
 		customer.setCreditCard(aux);
 		this.customerService.save(customer);
+		return result;
+	}
+
+	public CreditCard saveCCAgent(final CreditCard creditCard) {//El save para guardar creditcard para agentes
+
+		final CreditCard result = creditCard;
+		Agent agent;
+		agent = (Agent) this.actorService.findByPrincipal();
+		result.setAgent(agent);
+
+		this.creditCardRepository.save(creditCard);
+
 		return result;
 	}
 

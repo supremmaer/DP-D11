@@ -64,6 +64,9 @@
 		<security:intercept-url pattern="/customer/creditCard/edit.do" access="hasRole('CUSTOMER')" />
 		<security:intercept-url pattern="/customer/creditCard/create.do" access="hasRole('CUSTOMER')" />	
 		<security:intercept-url pattern="/customer/subscribe.do" access="hasRole('CUSTOMER')" />
+		
+		<security:intercept-url pattern="/agent/creditCard/edit.do" access="hasRole('AGENT')" />
+		<security:intercept-url pattern="/agent/creditCard/create.do" access="hasRole('AGENT')" />
 			
 		<security:intercept-url pattern="/user/followup/**" access="hasRole('USER')" />
 		
