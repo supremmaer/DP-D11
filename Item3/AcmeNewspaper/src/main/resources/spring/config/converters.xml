@@ -45,6 +45,21 @@
 		
 		<bean class="converters.UserToStringConverter" />
 		<bean class="converters.StringToUserConverter" />
+		
+		<bean class="converters.AgentToStringConverter" />
+		<bean class="converters.StringToAgentConverter" />
+
+		<bean class="converters.VolumeToStringConverter" />
+		<bean class="converters.StringToVolumeConverter" />
+
+		<bean class="converters.MessageToStringConverter" />
+		<bean class="converters.StringToMessageConverter" />
+
+		<bean class="converters.FolderToStringConverter" />
+		<bean class="converters.StringToFolderConverter" />
+
+		<bean class="converters.AdvertisementToStringConverter" />
+		<bean class="converters.StringToAdvertisementConverter" />
 
 		<!-- 
 			Add your own converters using entries of the following form: 
