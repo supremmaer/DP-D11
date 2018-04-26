@@ -2,6 +2,7 @@
 package services;
 
 import java.util.Collection;
+import java.util.HashSet;
 
 import javax.transaction.Transactional;
 
@@ -18,6 +19,8 @@ import security.LoginService;
 import security.UserAccount;
 import domain.Actor;
 import domain.Administrator;
+import domain.Folder;
+import domain.Message;
 import forms.ActorForm;
 
 @Service
@@ -36,6 +39,8 @@ public class ActorService {
 
 	@Autowired
 	private CustomerService			customerService;
+	@Autowired
+	private AgentService			agentService;
 
 
 	//Constructors
@@ -47,6 +52,7 @@ public class ActorService {
 		Actor result;
 
 		result = new Actor();
+	
 
 		return result;
 	}
@@ -130,6 +136,9 @@ public class ActorService {
 		} else if (actorType.equals(Authority.CUSTOMER)) {
 			authority.setAuthority(Authority.CUSTOMER);
 			result = this.customerService.create();
+		} else if (actorType.equals(Authority.AGENT)) {
+			authority.setAuthority(Authority.AGENT);
+			result = this.agentService.create();
 		} else
 			throw new ServiceException("Invalid actor type parameter");
 
@@ -152,7 +161,12 @@ public class ActorService {
 		result.setSurname(actorForm.getSurname());
 		result.getUserAccount().setUsername(actorForm.getUsername());
 		result.getUserAccount().setPassword(actorForm.getPassword());
-
+		Collection<Folder>	folders=new HashSet<>();
+		Collection<Message>	messagesSent=new HashSet<>();
+		Collection<Message>	messagesReceived=new HashSet<>();
+		result.setFolders(folders);
+		result.setMessagesReceived(messagesReceived);
+		result.setMessagesSent(messagesSent);
 		return result;
 	}
 

@@ -65,6 +65,8 @@
 						
 		<li><a href="actor/create.do?actorType=CUSTOMER"><spring:message
 					code="master.page.registerCustomer" /></a></li>
+		<li><a href="actor/create.do?actorType=AGENT"><spring:message
+					code="master.page.registerAgent" /></a></li>
 		
 		</security:authorize>
 		

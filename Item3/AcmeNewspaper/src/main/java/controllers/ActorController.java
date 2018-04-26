@@ -32,6 +32,8 @@ public class ActorController {
 		result = this.createRegisterModelAndView(actorForm);
 		if(actorType.equals("MANAGER"))
 			result.addObject("manager", true);
+		if(actorType.equals("AGENT"))
+			result.addObject("agent", true);
 		return result;
 	}
 
@@ -79,6 +81,8 @@ public class ActorController {
 		result.addObject("requestURI", requestURI);
 		if(actorForm.getAuthority().equals("MANAGER"))
 			result.addObject("manager", true);
+		if(actorForm.getAuthority().equals("AGENT"))
+			result.addObject("agent", true);
 		return result;
 	}
 
