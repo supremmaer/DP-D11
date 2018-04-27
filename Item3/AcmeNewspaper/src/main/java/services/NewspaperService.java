@@ -104,13 +104,13 @@ public class NewspaperService {
 		Assert.isTrue(newspaper.getPublicationDate() == null);
 		Assert.isTrue(!newspaper.getArticles().isEmpty());
 		Assert.notNull(newspaper);
-		for (final Article a : newspaper.getArticles()){
+		for (final Article a : newspaper.getArticles()) {
 			Assert.isTrue(!a.isDraftMode());
 			a.setPublishMoment(new Date(System.currentTimeMillis()));
 			this.articleService.updateDate(a);
 		}
 		newspaper.setPublicationDate(new Date(System.currentTimeMillis()));
-		newspaper=this.newspaperRepository.save(newspaper);
+		newspaper = this.newspaperRepository.save(newspaper);
 		return newspaper;
 	}
 
@@ -155,6 +155,13 @@ public class NewspaperService {
 		return this.newspaperRepository.findByCustomerID(customerID);
 	}
 
+	public Collection<Newspaper> findAllPublished() {
+		Collection<Newspaper> newspapers;
+
+		newspapers = this.newspaperRepository.findAllPublished();
+
+		return newspapers;
+	}
 	//DASHBOARD
 
 	public Double averageArticlesPerNewspaper() {

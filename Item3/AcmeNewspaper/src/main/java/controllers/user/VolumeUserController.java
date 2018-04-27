@@ -14,9 +14,11 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 import services.ActorService;
+import services.NewspaperService;
 import services.VolumeService;
 import controllers.AbstractController;
 import domain.Actor;
+import domain.Newspaper;
 import domain.User;
 import domain.Volume;
 
@@ -26,10 +28,13 @@ public class VolumeUserController extends AbstractController {
 
 	//Service -----------------------------------------------------------------
 	@Autowired
-	private VolumeService	volumeService;
+	private VolumeService		volumeService;
 
 	@Autowired
-	private ActorService	actorService;
+	private ActorService		actorService;
+
+	@Autowired
+	private NewspaperService	newspaperService;
 
 
 	// Constructors -----------------------------------------------------------
@@ -100,6 +105,45 @@ public class VolumeUserController extends AbstractController {
 				result = this.createEditModelAndView(volume, errorMessage);
 				result.addObject("requestURI", "user/volume/edit.do");
 			}
+
+		return result;
+	}
+
+	@RequestMapping(value = "/addNewspaper", method = RequestMethod.GET)
+	public ModelAndView addNewspaperCreate(@RequestParam final int volumeId) {
+		ModelAndView result;
+		Collection<Newspaper> newspapers;
+		Volume volume;
+
+		volume = this.volumeService.findOne(volumeId);
+		newspapers = this.newspaperService.findAllPublished();
+		newspapers.removeAll(volume.getNewspapers());
+		result = new ModelAndView("volume/addNewspaper");
+		result.addObject("volumeId", volumeId);
+		result.addObject("newspapers", newspapers);
+
+		return result;
+	}
+
+	@RequestMapping(value = "/addNewspaper", method = RequestMethod.POST, params = "save")
+	public ModelAndView addNewspaperSave(final Integer volumeId, final Integer newspaperId) {
+		ModelAndView result;
+		String errorMessage;
+		Volume volume;
+		Newspaper newspaper;
+
+		volume = this.volumeService.findOne(volumeId);
+		newspaper = this.newspaperService.findOne(newspaperId);
+		volume.addNewspapers(newspaper);
+		try {
+			this.volumeService.save(volume);
+			result = new ModelAndView("redirect:/volume/display.do?volumeId=" + volumeId);
+		} catch (final Throwable oops) {
+			errorMessage = this.error(oops.toString());
+			result = new ModelAndView("volume/addNewspaper");
+			result.addObject("message", errorMessage);
+			result.addObject("requestURI", "user/volume/addNewspaper.do");
+		}
 
 		return result;
 	}

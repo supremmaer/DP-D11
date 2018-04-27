@@ -72,4 +72,12 @@ public class Volume extends DomainEntity {
 	public void setNewspapers(final Collection<Newspaper> newspapers) {
 		this.newspapers = newspapers;
 	}
+
+	public void addNewspapers(final Newspaper newspaper) {
+		this.newspapers.add(newspaper);
+	}
+
+	public void removeNewspapers(final Newspaper newspaper) {
+		this.newspapers.remove(newspaper);
+	}
 }

@@ -61,3 +61,9 @@
 	</security:authorize>
 	
 	</display:table>
+	</br>
+<security:authorize access="hasRole('USER')">
+	<jstl:if test="${userId!=null}">
+		<a href="user/volume/addNewspaper.do?volumeId=${volume.id}"><spring:message code="volume.addNewspaper"/></a>
+	</jstl:if>
+</security:authorize>

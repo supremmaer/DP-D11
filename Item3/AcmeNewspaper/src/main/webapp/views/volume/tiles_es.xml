@@ -22,4 +22,9 @@
 		<put-attribute name="body" value="/views/volume/edit.jsp" />
 	</definition>
 	
+	<definition name="volume/addNewspaper" extends="master.page">	
+		<put-attribute name="title" value="Añadir periodico" />
+		<put-attribute name="body" value="/views/volume/addNewspaper.jsp" />
+	</definition>
+	
 </tiles-definitions>
