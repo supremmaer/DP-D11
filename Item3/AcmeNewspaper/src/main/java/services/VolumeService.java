@@ -1,21 +1,20 @@
 
 package services;
 
+import java.util.ArrayList;
 import java.util.Collection;
 
 import javax.transaction.Transactional;
 
-
 import org.springframework.beans.factory.annotation.Autowired;
-
 import org.springframework.stereotype.Service;
 import org.springframework.util.Assert;
 
 import repositories.VolumeRepository;
-
+import domain.Actor;
+import domain.Newspaper;
+import domain.User;
 import domain.Volume;
-
-
 
 @Service
 @Transactional
@@ -23,7 +22,11 @@ public class VolumeService {
 
 	//Managed Repository ----
 	@Autowired
-	private VolumeRepository volumeRepository;
+	private VolumeRepository	volumeRepository;
+
+	@Autowired
+	private ActorService		actorService;
+
 
 	//Constructors
 	public VolumeService() {
@@ -32,8 +35,14 @@ public class VolumeService {
 
 	public Volume create() {
 		Volume result;
+		Collection<Newspaper> newspapers;
+		User user;
 
+		user = (User) this.actorService.findByPrincipal();
+		newspapers = new ArrayList<Newspaper>();
 		result = new Volume();
+		result.setNewspapers(newspapers);
+		result.setUser(user);
 
 		return result;
 	}
@@ -46,6 +55,16 @@ public class VolumeService {
 		return result;
 	}
 
+	public Collection<Volume> findByPrincipal() {
+		Collection<Volume> result;
+		Actor actor;
+
+		actor = this.actorService.findByPrincipal();
+		result = this.volumeRepository.findByPrincipalId(actor.getId());
+
+		return result;
+	}
+
 	public void delete(final Volume volume) {
 
 		this.volumeRepository.delete(volume);
@@ -54,8 +73,18 @@ public class VolumeService {
 
 	public Volume save(final Volume volume) {
 		Volume result;
+		Collection<Newspaper> newspapers;
+		User user;
 
+		user = (User) this.actorService.findByPrincipal();
+		newspapers = new ArrayList<Newspaper>();
+		if (volume.getId() == 0) {
+			volume.setNewspapers(newspapers);
+			volume.setUser(user);
+		}
+		Assert.isTrue(volume.getUser().getId() == user.getId(), "volume.error.author");
 		result = this.volumeRepository.save(volume);
+
 		return result;
 	}
 

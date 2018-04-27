@@ -92,6 +92,7 @@
 					<security:authorize access="hasRole('USER')">
 					<li><a href="user/chirp/list.do"><spring:message code="master.page.user.chirps.followed" /></a></li>
 					<li><a href="user/chirp/create.do"><spring:message code="chirp.create" /></a></li>
+					<li><a href="user/volume/list.do"><spring:message code="master.page.user.volumes" /></a></li>
 					</security:authorize>		
 					<security:authorize access="hasRole('CUSTOMER')">
 					<li><a href="customer/creditCard/create.do"><spring:message code="master.page.creditcard.create" /></a></li>
