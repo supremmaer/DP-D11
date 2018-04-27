@@ -30,5 +30,27 @@
 
 <display:table pagesize="5" class="displaytag" keepStatus="true"
 	name="volumes" requestURI="volume/list.do" id="row">
+	
+		<spring:message code="volume.title" var="titleHeader" />
+	<display:column title="${titleHeader}">
+		<a href="newspaper/list.do"><jstl:out
+				value="${row.title}"></jstl:out></a>
+	</display:column>
+	
+		<spring:message code="volume.description" var="descriptionHeader" />
+	<display:column title="${descriptionHeader}">
+		<jstl:out
+				value="${row.title}"></jstl:out>
+	</display:column>
+	
+	<spring:message code="volume.year" var="yearHeader" />
+	<display:column title="${yearHeader}">
+		<jstl:out
+				value="${row.year}"></jstl:out>
+	</display:column>
+
+	
+	
+	
 </display:table>
 
