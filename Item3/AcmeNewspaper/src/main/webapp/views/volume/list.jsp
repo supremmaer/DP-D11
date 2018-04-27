@@ -29,11 +29,11 @@
 <!-- Listing grid -->
 
 <display:table pagesize="5" class="displaytag" keepStatus="true"
-	name="volumes" requestURI="volume/list.do" id="row">
+	name="volumes" requestURI="${requestURI }" id="row">
 	
 		<spring:message code="volume.title" var="titleHeader" />
 	<display:column title="${titleHeader}">
-		<a href="volume/display.do"><jstl:out
+		<a href="volume/display.do?volumeId=${row.id }"><jstl:out
 				value="${row.title}"></jstl:out></a>
 	</display:column>
 	

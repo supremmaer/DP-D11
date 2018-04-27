@@ -1,6 +1,7 @@
 
 package controllers;
 
+import java.util.ArrayList;
 import java.util.Collection;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -10,8 +11,11 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
 import services.ActorService;
+import services.NewspaperService;
 import services.VolumeService;
 import domain.Actor;
+import domain.Customer;
+import domain.Newspaper;
 import domain.User;
 import domain.Volume;
 
@@ -21,10 +25,13 @@ public class VolumeController extends AbstractController {
 
 	//Service -----------------------------------------------------------------
 	@Autowired
-	private VolumeService	volumeService;
+	private VolumeService		volumeService;
 
 	@Autowired
-	private ActorService	actorService;
+	private ActorService		actorService;
+
+	@Autowired
+	private NewspaperService	newspaperService;
 
 
 	// Constructors -----------------------------------------------------------
@@ -49,6 +56,31 @@ public class VolumeController extends AbstractController {
 			actor = this.actorService.findByPrincipal();
 			if (actor instanceof User)
 				result.addObject("userId", actor.getId());
+		}
+
+		return result;
+	}
+
+	@RequestMapping(value = "/display", method = RequestMethod.GET)
+	public ModelAndView display(final int volumeId) {
+		ModelAndView result;
+		Volume volume;
+		Actor actor;
+
+		volume = this.volumeService.findOne(volumeId);
+		result = new ModelAndView("volume/display");
+		result.addObject("requestURI", "volume/display.do");
+		result.addObject("volume", volume);
+		if (this.actorService.isLogged()) {
+			actor = this.actorService.findByPrincipal();
+			if (actor instanceof User)
+				result.addObject("userId", actor.getId());
+			else if (actor instanceof Customer) {
+				Collection<Newspaper> newspaperscustomer = new ArrayList<Newspaper>();
+				final Customer customer = (Customer) this.actorService.findByPrincipal();
+				newspaperscustomer = this.newspaperService.findByCustomerID(customer.getId());
+				result.addObject("newspaperscustomer", newspaperscustomer);
+			}
 		}
 
 		return result;
