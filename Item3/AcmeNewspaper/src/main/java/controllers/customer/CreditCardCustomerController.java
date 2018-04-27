@@ -79,7 +79,7 @@ public class CreditCardCustomerController extends AbstractController {
 		result = new ModelAndView("creditCard/edit");
 		result.addObject("creditCard", creditCard);
 		result.addObject("message", messageCode);
-
+		result.addObject("requestURI", "customer/creditCard/edit.do");
 		return result;
 	}
 }

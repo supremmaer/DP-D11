@@ -10,7 +10,7 @@
 	uri="http://www.springframework.org/security/tags"%>
 <%@taglib prefix="display" uri="http://displaytag.sf.net"%>
 
-<form:form action="customer/creditCard/edit.do"	modelAttribute="creditCard">
+<form:form action="${requestURI}"	modelAttribute="creditCard">
 
 <form:hidden path="id"/>
 <form:hidden path="version"/>
@@ -19,35 +19,35 @@
 <form:hidden path="agent"/>
 
 <form:label path="holderName">
-		<spring:message code="creditcard.holderName" />:
+		<spring:message code="creditCard.holderName" />:
 	</form:label>
 	<form:input path="holderName" />
 	<form:errors cssClass="error" path="holderName" />
 	<br />
 	
 <form:label path="brandName">
-		<spring:message code="creditcard.brandName" />:
+		<spring:message code="creditCard.brandName" />:
 	</form:label>
 	<form:input path="brandName" />
 	<form:errors cssClass="error" path="brandName" />
 	<br />
 	
 <form:label path="number">
-		<spring:message code="creditcard.number" />:
+		<spring:message code="creditCard.number" />:
 	</form:label>
 	<form:input path="number" />
 	<form:errors cssClass="error" path="number" />
 	<br />
 	
 <form:label path="expirationMonth">
-	<spring:message code="creditcard.expirationMonth"/>	
+	<spring:message code="creditCard.expirationMonth"/>	
 	</form:label>
 	<form:input path="expirationMonth" />
 	<form:errors cssClass="error" path="expirationMonth" />
 	<br />
 	
 <form:label path="expirationYear">
-	<spring:message code="creditcard.expirationYear"/>	
+	<spring:message code="creditCard.expirationYear"/>	
 	</form:label>
 	<form:input path="expirationYear" />
 	<form:errors cssClass="error" path="expirationYear" />
@@ -55,16 +55,16 @@
 	
 
 <form:label path="CVV">
-	<spring:message code="creditcard.cvvCode"/>	
+	<spring:message code="creditCard.cvvCode"/>	
 	</form:label>
 	<form:input path="CVV" />
 	<form:errors cssClass="error" path="CVV" />
 	<br />
 
 <input type="submit" name="save"
-		value="<spring:message code="creditcard.save" />" />
+		value="<spring:message code="creditCard.save" />" />
 		 
-	<spring:message code="creditcard.cancel" var="cancel"/>
+	<spring:message code="creditCard.cancel" var="cancel"/>
 	<input type="button" name="cancel" value="${cancel}" onclick="javascript:relativeRedir('newspaper/list.do');" />
 	<br />	
 	

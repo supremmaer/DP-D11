@@ -51,7 +51,6 @@ public class CreditCardService {
 
 		result.setNewspapers(newspapers);
 		result.setVolumes(volumes);
-		result.setAgent(null);
 
 		return result;
 	}
@@ -71,12 +70,12 @@ public class CreditCardService {
 	}
 
 	public CreditCard save(final CreditCard creditCard) {
-		final CreditCard result = creditCard;
+		CreditCard result;
 
 		Collection<CreditCard> aux;
 		Customer customer;
 		customer = (Customer) this.actorService.findByPrincipal();
-		this.creditCardRepository.save(result);
+		result = this.creditCardRepository.save(creditCard);
 
 		//añado la creditCard al customer
 		aux = customer.getCreditCard();
@@ -88,12 +87,12 @@ public class CreditCardService {
 
 	public CreditCard saveCCAgent(final CreditCard creditCard) {//El save para guardar creditcard para agentes
 
-		final CreditCard result = creditCard;
+		CreditCard result;
 		Agent agent;
 		agent = (Agent) this.actorService.findByPrincipal();
-		result.setAgent(agent);
+		creditCard.setAgent(agent);
 
-		this.creditCardRepository.save(creditCard);
+		result = this.creditCardRepository.save(creditCard);
 
 		return result;
 	}
