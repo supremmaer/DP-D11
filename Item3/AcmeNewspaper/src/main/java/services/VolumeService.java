@@ -87,6 +87,13 @@ public class VolumeService {
 
 		return result;
 	}
+	public Collection<Volume> findByCustomerId(final int id) {
+		Collection<Volume> result;
+
+		result = this.volumeRepository.findByCustomerID(id);
+
+		return result;
+	}
 
 	public Volume findOne(final int volumeId) {
 		Volume result;

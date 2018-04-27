@@ -44,21 +44,7 @@
 	<display:column title="${pictureHeader}">
 		<img src="${row.picture}" height="150" width="250" />
 	</display:column>
-		<security:authorize access="hasRole('CUSTOMER')">
-		<display:column sortable="false">
-			<jstl:if test="${row.publicity==true && !newspaperscustomer.contains(row)}">
-				<a href="customer/subscribe.do?newspaperId=${row.id}"><spring:message
-						code="newspaper.subscribe" /></a>
-			</jstl:if>
-		</display:column>
-	</security:authorize>
 
-	<security:authorize access="hasRole('ADMIN')">
-		<display:column>
-			<a href="administrator/newspaper/delete.do?newspaperId=${row.id}"><spring:message
-					code="chirp.delete" /></a>
-		</display:column>
-	</security:authorize>
 	
 	</display:table>
 	</br>

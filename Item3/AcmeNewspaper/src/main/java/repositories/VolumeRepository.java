@@ -15,4 +15,7 @@ public interface VolumeRepository extends JpaRepository<Volume, Integer> {
 	@Query("select v from Volume v where v.user.id=?1")
 	Collection<Volume> findByPrincipalId(int id);
 
+	@Query("select c.volumes from Customer cu join cu.creditCard c where cu.id=?1")
+	Collection<Volume> findByCustomerID(int customerID);
+
 }

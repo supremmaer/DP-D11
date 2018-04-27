@@ -20,6 +20,7 @@ import services.AdvertisementService;
 import services.ArticleService;
 import services.NewspaperService;
 import services.UserService;
+import services.VolumeService;
 import domain.Article;
 import domain.Customer;
 import domain.Newspaper;
@@ -41,6 +42,8 @@ public class NewspaperController extends AbstractController {
 	private ActorService			actorService;
 	@Autowired
 	private AdvertisementService	advertisementService;
+	@Autowired
+	private VolumeService			volumeService;
 
 
 	// Constructors -----------------------------------------------------------
@@ -155,7 +158,8 @@ public class NewspaperController extends AbstractController {
 			if (this.actorService.isLogged() && this.actorService.findByPrincipal() instanceof Customer) {
 				final Customer c = (Customer) this.actorService.findByPrincipal();
 				final Collection<Newspaper> customerNewspapers = this.newspaperService.findByCustomerID(c.getId());
-				if (customerNewspapers.contains(newspaper))
+				final Collection<Newspaper> customerNewspaperVolumes = this.newspaperService.findByCustomerIDAndVolumes(c.getId());
+				if (customerNewspapers.contains(newspaper) || customerNewspaperVolumes.contains(newspaper))
 					mostrarArticles = true;
 			}
 

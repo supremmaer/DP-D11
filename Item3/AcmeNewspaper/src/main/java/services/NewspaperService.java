@@ -154,6 +154,9 @@ public class NewspaperService {
 	public Collection<Newspaper> findByCustomerID(final int customerID) {
 		return this.newspaperRepository.findByCustomerID(customerID);
 	}
+	public Collection<Newspaper> findByCustomerIDAndVolumes(final int customerID) {
+		return this.newspaperRepository.findByCustomerIDAndVolumes(customerID);
+	}
 
 	public Collection<Newspaper> findAllPublished() {
 		Collection<Newspaper> newspapers;
