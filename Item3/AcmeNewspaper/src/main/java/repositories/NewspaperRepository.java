@@ -57,5 +57,8 @@ public interface NewspaperRepository extends JpaRepository<Newspaper, Integer> {
 	@Query("select n from User u join u.newspapers n where n.publicity=false and u.id=?1")
 	Collection<Newspaper> findNewPublicByUser(int id);
 
+	@Query("select distinct a.newspaper from Advertisement a")
+	Collection<Newspaper> findNewspaperWithAdvertisement();
+
 	//dashboard
 }

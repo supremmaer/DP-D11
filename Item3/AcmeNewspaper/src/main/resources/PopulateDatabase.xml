@@ -718,7 +718,7 @@
 		</property>
 		<property name="volumes">
 			<list>
-			
+				<ref bean="volume1"/>
 			</list>	
 		</property>
 		<property name="agent">
@@ -734,15 +734,35 @@
 		<property name="CVV" value="124" />
 		<property name="newspapers">
 			<list>
-			
+				<ref bean="newspaper3"/>
+				<ref bean="newspaper1"/>
 			</list>	
 		</property>
 		<property name="volumes">
 			<list>
-				<ref bean="volume1"/>
+
 			</list>	
 		</property>
 		<property name="agent" ref="agent1" />
+	</bean>
+	<bean id="creditCard4" class="domain.CreditCard">
+		<property name="holderName" value="Juan Perez" />
+		<property name="brandName" value="Visa" />
+		<property name="number" value="5480848314079443" />
+		<property name="expirationMonth" value="10" />
+		<property name="expirationYear" value="2020" />
+		<property name="CVV" value="124" />
+		<property name="newspapers">
+			<list>
+				<ref bean="newspaper1"/>
+			</list>	
+		</property>
+		<property name="volumes">
+			<list>
+		
+			</list>	
+		</property>
+		<property name="agent" ref="agent2" />
 	</bean>
 	<!-- Volume -->
 	<bean id="volume1" class="domain.Volume">
@@ -775,13 +795,33 @@
 	
 	<!-- Advertisement-->
 	
-		<bean id="advertisement1" class="domain.Advertisement">
+	<bean id="advertisement1" class="domain.Advertisement">
 		<property name="title" value="Pepón" />
 		<property name="banner" value="http://www.us.es/hereyouhaveanattachment" />
 		<property name="targetPage" value="http://www.us.es/hereyouhaveanattachment" />
 		<property name="taboo" value="false" />
 		<property name="agent" ref="agent1" />
 		<property name="creditCard" ref="creditCard3" />
+		<property name="newspaper" ref="newspaper1"/>
+	</bean>
+	
+	<bean id="advertisement2" class="domain.Advertisement">
+		<property name="title" value="Pepón" />
+		<property name="banner" value="http://www.us.es/hereyouhaveanattachment" />
+		<property name="targetPage" value="http://www.us.es/hereyouhaveanattachment" />
+		<property name="taboo" value="false" />
+		<property name="agent" ref="agent1" />
+		<property name="creditCard" ref="creditCard3" />
+		<property name="newspaper" ref="newspaper3"/>
+	</bean>
+	
+	<bean id="advertisement3" class="domain.Advertisement">
+		<property name="title" value="Ñeñe" />
+		<property name="banner" value="http://www.us.es/hereyouhaveanattachment" />
+		<property name="targetPage" value="http://www.us.es/hereyouhaveanattachment" />
+		<property name="taboo" value="false" />
+		<property name="agent" ref="agent2" />
+		<property name="creditCard" ref="creditCard4" />
 		<property name="newspaper" ref="newspaper1"/>
 	</bean>
 		

@@ -70,6 +70,12 @@ public class AdvertisementService {
 		return result;
 	}
 
+	public Collection<Advertisement> findByNewspaper(final int adverisementID) {
+		Collection<Advertisement> result;
+		result = this.advertisementRepository.findByNewspaper(adverisementID);
+		return result;
+	}
+
 	//Other business methods ----------------------------------------------------
 
 	public Boolean isTaboo(final String string, final Advertisement advertisement) {
@@ -95,4 +101,5 @@ public class AdvertisementService {
 		return result;
 
 	}
+
 }
