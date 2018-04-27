@@ -46,35 +46,39 @@ public class ActorTest extends AbstractTest {
 	public void createAndSaveDriver() {
 		final Object testingData[][] = {
 			{	//Creacion correcta de un usuario
-				"userAccountTest", "password", "password", "Name", "surname", "email@email.email", "123456789", "Address", "USER",true,null
+				"userAccountTest", "password", "password", "Name1", "surname", "email@email.email", "123456789", "Address", "USER", true, null
 			}, {	//Creacion correcta de un usuario sin direccion
-				"userAccountTest", "password", "password", "Name", "surname", "email@email.email", "123456789", null, "USER",true, null
+				"userAccountTest", "password", "password", "Name2", "surname", "email@email.email", "123456789", null, "USER", true, null
 			}, {	//Creacion correcta de un usuario sin telefono
-				"userAccountTest", "password", "password", "Name", "surname", "email@email.email", null, "Address", "USER",true,null
+				"userAccountTest", "password", "password", "Name3", "surname", "email@email.email", null, "Address", "USER", true, null
 			}, {	//useraccount con nombre vacio
-				"", "password", "password", "Name", "surname", "email@email.email", "123456789", "Address", "USER",true,ConstraintViolationException.class
+				"", "password", "password", "Name4", "surname", "email@email.email", "123456789", "Address", "USER", true, ConstraintViolationException.class
 			}, {	//user con nombre vacio
-				"userAccountTest", "password", "password", "", "surname", "email@email.email", "123456789", "Address", "USER",true, ConstraintViolationException.class
+				"userAccountTest", "password", "password", "", "surname", "email@email.email", "123456789", "Address", "USER", true, ConstraintViolationException.class
 			}, {	//user con nombre nulo
-				"userAccountTest", "password", "password", null, "surname", "email@email.email", "123456789", "Address", "USER",true,  ConstraintViolationException.class
+				"userAccountTest", "password", "password", null, "surname", "email@email.email", "123456789", "Address", "USER", true, ConstraintViolationException.class
 			}, {	//user con apellido vacio
-				"userAccountTest", "password", "password", "Name", "", "email@email.email", "123456789", "Address", "USER",true,  ConstraintViolationException.class
+				"userAccountTest", "password", "password", "Name", "", "email@email.email", "123456789", "Address", "USER", true, ConstraintViolationException.class
 			}, {	//user con apellido nulo
-				"userAccountTest", "password", "password", "Name", null, "email@email.email", "123456789", "Address", "USER",true, ConstraintViolationException.class
+				"userAccountTest", "password", "password", "Name", null, "email@email.email", "123456789", "Address", "USER", true, ConstraintViolationException.class
 			}, {	//user con correo vacio
-				"userAccountTest", "password", "password", "Name", "Surname", "", "123456789", "Address", "USER",true,ConstraintViolationException.class
+				"userAccountTest", "password", "password", "Name", "Surname", "", "123456789", "Address", "USER", true, ConstraintViolationException.class
 			}, {	//user con correo nulo
-				"userAccountTest", "password", "password", "Name", "Surname", null, "123456789", "Address", "USER",true,  ConstraintViolationException.class
+				"userAccountTest", "password", "password", "Name", "Surname", null, "123456789", "Address", "USER", true, ConstraintViolationException.class
 			}, {	//user con correo incorrecto
-				"userAccountTest", "password", "password", "Name", "Surname", "jdkshf", "123456789", "Address", "USER",true,  ConstraintViolationException.class
+				"userAccountTest", "password", "password", "Name", "Surname", "jdkshf", "123456789", "Address", "USER", true, ConstraintViolationException.class
 			}, {	//Creacion correcta de un CUSTOMER
-				"userAccountTest", "password", "password", "Name", "surname", "email@email.email", "123456789", "Address", "CUSTOMER",true, null
+				"userAccountTest", "password", "password", "NameCustomer0", "surname", "email@email.email", "123456789", "Address", "CUSTOMER", true, null
 			}, {	//Creacion correcta de un CUSTOMER sin direccion
-				"userAccountTest", "password", "password", "Name", "surname", "email@email.email", "123456789", null, "CUSTOMER",true, null
+				"userAccountTest", "password", "password", "NameCustomer1", "surname", "email@email.email", "123456789", null, "CUSTOMER", true, null
 			}, {	//Creacion correcta de un CUSTOMER sin telefono
-				"userAccountTest", "password", "password", "Name", "surname", "email@email.email", null, "Address", "CUSTOMER",true,  null
-			}, {	//Creacion correcta de un admin
-				"userAccountTest", "password", "password", "Name", "surname", "email@email.email", null, "Address", "ADMIN",true,  null
+				"userAccountTest", "password", "password", "NameCustomer2", "surname", "email@email.email", null, "Address", "CUSTOMER", true, null
+			}, {	//Creacion correcta de un agent
+				"userAccountTest", "password", "password", "NameAgent1", "surname", "email@email.email", "123456789", "Address", "AGENT", true, null
+			}, {	//Creacion incorrecta de un agent
+				"userAccountTest", "password", "password", "", "surname", "email@email.email", "123456789", "Address", "AGENT", true, ConstraintViolationException.class
+			}, {	//Creacion incorrecta de un agent
+				"userAccountTest", "password", "password", "Nameagent3", "surname", "emailemafgdfggdilemail", "123456789", "Address", "AGENT", true, ConstraintViolationException.class
 			}
 		};
 
@@ -82,7 +86,7 @@ public class ActorTest extends AbstractTest {
 			try {
 				super.startTransaction();
 				this.createAndSaveTemplate((String) testingData[i][0], (String) testingData[i][1], (String) testingData[i][2], (String) testingData[i][3], (String) testingData[i][4], (String) testingData[i][5], (String) testingData[i][6],
-					(String) testingData[i][7], (String) testingData[i][8],(Boolean) testingData[i][9], (Class<?>) testingData[i][10]);
+					(String) testingData[i][7], (String) testingData[i][8], (Boolean) testingData[i][9], (Class<?>) testingData[i][10]);
 			} catch (final Throwable oops) {
 				throw new RuntimeException(oops);
 			} finally {
@@ -91,13 +95,14 @@ public class ActorTest extends AbstractTest {
 	}
 
 	// Ancillary methods ------------------------------------------------------
-	protected void createAndSaveTemplate(final String username, final String password, final String password2, final String name, final String surname, final String email, final String phone, final String address, final String authority,final Boolean agree,
-		final Class<?> expected) {
+	protected void createAndSaveTemplate(final String username, final String password, final String password2, final String name, final String surname, final String email, final String phone, final String address, final String authority,
+		final Boolean agree, final Class<?> expected) {
 		Class<?> caught;
 		ActorForm actorForm;
 		Actor actor;
 		caught = null;
 		try {
+
 			actorForm = new ActorForm();
 			actorForm.setUsername(username);
 			actorForm.setPassword(password);
@@ -109,13 +114,13 @@ public class ActorTest extends AbstractTest {
 			actorForm.setAddress(address);
 			actorForm.setAuthority(authority);
 			actorForm.setAgree(true);
-	
 
 			actor = this.actorService.create(actorForm);
 			this.actorService.register(actor);
 			this.actorService.flush();
 
 		} catch (final Throwable oops) {
+			System.out.println(name + " " + oops.getClass());
 			caught = oops.getClass();
 		}
 
