@@ -40,7 +40,7 @@
 		<spring:message code="volume.description" var="descriptionHeader" />
 	<display:column title="${descriptionHeader}">
 		<jstl:out
-				value="${row.title}"></jstl:out>
+				value="${row.description}"></jstl:out>
 	</display:column>
 	
 	<spring:message code="volume.year" var="yearHeader" />
@@ -48,9 +48,20 @@
 		<jstl:out
 				value="${row.year}"></jstl:out>
 	</display:column>
-
+	
+	<security:authorize access="hasRole('USER')">
+		<display:column>
+			<jstl:if test="${userId== row.user.id}">
+				<a href="user/volume/edit.do?volumeId=${row.id}"><spring:message code="volume.edit"/></a>
+			</jstl:if>	
+			
+		</display:column>
+	</security:authorize>
 	
 	
 	
 </display:table>
 
+<security:authorize access="hasRole('USER')">
+	<a href="user/volume/create.do"><spring:message code="volume.create"/></a>
+</security:authorize>

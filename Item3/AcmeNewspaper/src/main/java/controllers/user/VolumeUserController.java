@@ -94,11 +94,11 @@ public class VolumeUserController extends AbstractController {
 		else
 			try {
 				this.volumeService.save(volume);
-				result = new ModelAndView("redirect:/volume/list.do");
+				result = new ModelAndView("redirect:/user/volume/list.do");
 			} catch (final Throwable oops) {
 				errorMessage = this.error(oops.toString());
 				result = this.createEditModelAndView(volume, errorMessage);
-				result.addObject("requestURI", "volume/edit.do");
+				result.addObject("requestURI", "user/volume/edit.do");
 			}
 
 		return result;
