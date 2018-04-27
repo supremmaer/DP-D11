@@ -49,6 +49,7 @@
 		<security:intercept-url pattern="/administrator/newspaper/*" access="hasRole('ADMIN')" /> 
 		<security:intercept-url pattern="/administrator/config/*" access="hasRole('ADMIN')" /> 
 		<security:intercept-url pattern="/administrator/dashboard.do" access="hasRole('ADMIN')" />
+		<security:intercept-url pattern="/administrator/advertisement/*" access="hasRole('ADMIN')"/>
 		
 		<security:intercept-url pattern="/user/list.do" access="permitAll" />
 		<security:intercept-url pattern="/user/display.do" access="permitAll" />
