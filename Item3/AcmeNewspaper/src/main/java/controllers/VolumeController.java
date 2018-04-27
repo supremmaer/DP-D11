@@ -16,7 +16,7 @@ import domain.User;
 import domain.Volume;
 
 @Controller
-@RequestMapping("/user/volume")
+@RequestMapping("/volume")
 public class VolumeController extends AbstractController {
 
 	//Service -----------------------------------------------------------------

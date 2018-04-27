@@ -78,6 +78,8 @@
 		<security:intercept-url pattern="/newspaper/publish.do" access="hasRole('USER')" />
 		<security:intercept-url pattern="/newspaper/display.do" access="permitAll" />
 		
+		<security:intercept-url pattern="/volume/list.do" access="permitAll" />
+		
 		<security:intercept-url pattern="/chirp/list.do" access="permitAll" />
 		<security:intercept-url pattern="/user/chirp/*" access="hasRole('USER')" />
 			
