@@ -16,6 +16,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 import services.ActorService;
+import services.AdvertisementService;
 import services.ArticleService;
 import services.NewspaperService;
 import services.UserService;
@@ -31,13 +32,15 @@ public class NewspaperController extends AbstractController {
 	// Services ---------------------------------------------------------------
 
 	@Autowired
-	private NewspaperService	newspaperService;
+	private NewspaperService		newspaperService;
 	@Autowired
-	private ArticleService		articleService;
+	private ArticleService			articleService;
 	@Autowired
-	private UserService			userService;
+	private UserService				userService;
 	@Autowired
-	private ActorService		actorService;
+	private ActorService			actorService;
+	@Autowired
+	private AdvertisementService	advertisementService;
 
 
 	// Constructors -----------------------------------------------------------
@@ -147,16 +150,14 @@ public class NewspaperController extends AbstractController {
 			mapaMegaComplejo.put(a.getId(), u);
 		}
 		if (newspaper.getPublicity() == false)
-		mostrarArticles = true;
-		if (newspaper.getPublicity() == true) {
-		
-			if (this.actorService.isLogged()&&this.actorService.findByPrincipal() instanceof Customer) {
+			mostrarArticles = true;
+		if (newspaper.getPublicity() == true)
+			if (this.actorService.isLogged() && this.actorService.findByPrincipal() instanceof Customer) {
 				final Customer c = (Customer) this.actorService.findByPrincipal();
 				final Collection<Newspaper> customerNewspapers = this.newspaperService.findByCustomerID(c.getId());
 				if (customerNewspapers.contains(newspaper))
 					mostrarArticles = true;
 			}
-		}
 
 		result.addObject("mapaMegaComplejo", mapaMegaComplejo);
 		result.addObject("mostrarArticles", mostrarArticles);

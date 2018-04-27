@@ -83,6 +83,7 @@
 					<li><a href="administrator/newspaper/list.do"><spring:message code="master.page.administrator.newspaper" /></a></li>
 					<li><a href="administrator/article/list.do"><spring:message code="master.page.administrator.articles" /></a></li>
 					<li><a href="administrator/config/display.do"><spring:message code="master.page.administrator.tabooWords" /></a></li>
+					<li><a href="administrator/advertisement/list.do""><spring:message code="master.page.administrator.advertisementsTaboo"/></a></li>
 					<li><a href="actor/create.do?actorType=ADMIN"><spring:message
 					code="master.page.createAdmin" /></a></li>
 					<li><a href="administrator/dashboard.do"><spring:message
