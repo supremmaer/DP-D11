@@ -87,4 +87,12 @@ public class AdvertisementService {
 		return result;
 	}
 
+	public Collection<Advertisement> findTaboo() {
+		Collection<Advertisement> result;
+
+		result = this.advertisementRepository.findTaboo();
+
+		return result;
+
+	}
 }
