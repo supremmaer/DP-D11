@@ -35,6 +35,7 @@
 		<value>/views/config/messages</value>
 		<value>/views/creditCard/messages</value>
 		<value>/views/advertisement/messages</value>
+		<value>/views/volume/messages</value>
 	</util:list>
 
 </beans>
