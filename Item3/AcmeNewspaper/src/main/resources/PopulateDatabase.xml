@@ -782,6 +782,7 @@
 		<property name="taboo" value="false" />
 		<property name="agent" ref="agent1" />
 		<property name="creditCard" ref="creditCard3" />
+		<property name="newspaper" ref="newspaper1"/>
 	</bean>
 		
 	<!-- Customer -->	

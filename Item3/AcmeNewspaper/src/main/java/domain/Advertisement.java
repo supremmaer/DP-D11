@@ -64,6 +64,7 @@ public class Advertisement extends DomainEntity {
 
 	private Agent		agent;
 	private CreditCard	creditCard;
+	private Newspaper	newspaper;
 
 
 	@Valid
@@ -77,12 +78,23 @@ public class Advertisement extends DomainEntity {
 		return this.creditCard;
 	}
 
+	@Valid
+	@ManyToOne(optional = false)
+	public Newspaper getNewspaper() {
+		return this.newspaper;
+	}
+
 	public void setAgent(final Agent agent) {
 		this.agent = agent;
 	}
 
 	public void setCreditCard(final CreditCard creditCard) {
 		this.creditCard = creditCard;
+	}
+
+	public void setNewspaper(final Newspaper newspaper) {
+		this.newspaper = newspaper;
+
 	}
 
 }
