@@ -33,7 +33,7 @@
 	
 		<spring:message code="volume.title" var="titleHeader" />
 	<display:column title="${titleHeader}">
-		<a href="newspaper/list.do"><jstl:out
+		<a href="volume/display.do"><jstl:out
 				value="${row.title}"></jstl:out></a>
 	</display:column>
 	
