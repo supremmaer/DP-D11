@@ -17,6 +17,7 @@ import domain.Customer;
 import domain.Newspaper;
 import domain.Volume;
 import forms.SubscribeForm;
+import forms.SubscribeVolumeForm;
 
 @Service
 @Transactional
@@ -131,6 +132,15 @@ public class CreditCardService {
 		return result;
 	}
 
+	public SubscribeVolumeForm createForm(final Volume volume) {
+		SubscribeVolumeForm result;
+
+		result = new SubscribeVolumeForm();
+		result.setVolume(volume);
+
+		return result;
+	}
+
 	public void subscribe(final SubscribeForm subscribeForm) {
 
 		final Newspaper newspaper = subscribeForm.getNewspaper();
@@ -139,6 +149,21 @@ public class CreditCardService {
 		final Collection<Newspaper> aux = creditCard.getNewspapers();
 		aux.add(newspaper);
 		creditCard.setNewspapers(aux);
+		this.saveAddNewspaper(creditCard);
+
+	}
+
+	public void subscribe(final SubscribeVolumeForm subscribeVolumeForm) {
+
+		Volume volume;
+		CreditCard creditCard;
+		Collection<Volume> aux;
+		volume = subscribeVolumeForm.getVolume();
+		creditCard = subscribeVolumeForm.getCreditCard();
+
+		aux = creditCard.getVolumes();
+		aux.add(volume);
+		creditCard.setVolumes(aux);
 		this.saveAddNewspaper(creditCard);
 
 	}
