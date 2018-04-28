@@ -46,6 +46,16 @@
 			</ul>
 			
 		</li>
+		<li><a class="fNiv"><spring:message code="master.page.Volume" /></a>
+			<ul>
+				<li class="arrow"></li>
+				<li><a href="volume/list.do"><spring:message
+							code="master.page.VolumeList" /></a>
+				</li>
+				
+			</ul>
+			
+		</li>
 		
 		<li><a class="fNiv"><spring:message code="master.page.User" /></a>
 			<ul>

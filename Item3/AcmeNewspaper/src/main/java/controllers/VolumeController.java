@@ -1,7 +1,6 @@
 
 package controllers;
 
-import java.util.ArrayList;
 import java.util.Collection;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,7 +14,6 @@ import services.NewspaperService;
 import services.VolumeService;
 import domain.Actor;
 import domain.Customer;
-import domain.Newspaper;
 import domain.User;
 import domain.Volume;
 
@@ -66,8 +64,12 @@ public class VolumeController extends AbstractController {
 		ModelAndView result;
 		Volume volume;
 		Actor actor;
+		Customer customer;
+		Collection<Volume> volumesCustomer;
+		boolean subscribeable;
 
 		volume = this.volumeService.findOne(volumeId);
+		subscribeable = true;
 		result = new ModelAndView("volume/display");
 		result.addObject("requestURI", "volume/display.do");
 		result.addObject("volume", volume);
@@ -76,12 +78,13 @@ public class VolumeController extends AbstractController {
 			if (actor instanceof User)
 				result.addObject("userId", actor.getId());
 			else if (actor instanceof Customer) {
-				Collection<Newspaper> newspaperscustomer = new ArrayList<Newspaper>();
-				final Customer customer = (Customer) this.actorService.findByPrincipal();
-				newspaperscustomer = this.newspaperService.findByCustomerID(customer.getId());
-				result.addObject("newspaperscustomer", newspaperscustomer);
+				customer = (Customer) this.actorService.findByPrincipal();
+				volumesCustomer = this.volumeService.findByCustomerId(customer.getId());
+				if (volumesCustomer.contains(volume))
+					subscribeable = false;
 			}
 		}
+		result.addObject("subscribeable", subscribeable);
 
 		return result;
 	}

@@ -14,9 +14,15 @@
 <spring:message code="volume.description" />: <jstl:out value="${volume.description}"></jstl:out> <br>
 <spring:message code="volume.year" />: <jstl:out value="${volume.year}"></jstl:out>
 
+<security:authorize access="hasRole('CUSTOMER')">
+	<jstl:if test="${subscribeable}">
+		<a href="customer/volume/subscribe.do?volumeId=${volume.id}"><spring:message code="volume.subscribe"/></a>
+	</jstl:if>
+</security:authorize>
+
 <!-- Listing grid -->
 
-<display:table pagesize="5" class="displaytag" keepStatus="true"
+<display:table pagesize="5" class="displaytag"
 	name="volume.newspapers" requestURI="${requestURI }" id="row">
 	
 		<spring:message code="newspaper.title" var="titleHeader" />
