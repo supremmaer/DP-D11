@@ -38,7 +38,7 @@
 
 <!-- Listing grid -->
 
-<display:table pagesize="5" class="displaytag" keepStatus="true"
+<display:table pagesize="5" class="displaytag" 
 	name="newspapers" requestURI="newspaper/list.do" id="row">
 
 	<spring:message code="newspaper.title" var="titleHeader" />

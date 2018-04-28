@@ -28,7 +28,7 @@
 
 <!-- Listing grid -->
 
-<display:table pagesize="5" class="displaytag" keepStatus="true"
+<display:table pagesize="5" class="displaytag" 
 	name="volumes" requestURI="${requestURI }" id="row">
 	
 		<spring:message code="volume.title" var="titleHeader" />
