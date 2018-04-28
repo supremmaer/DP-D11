@@ -15,6 +15,12 @@
 	
 <div id="article">
 
+	<jstl:if test="${banner != null}">
+	<div>
+		<a href="${targetPage}"><img src="${banner}" alt="Advertisement Banner" /></a>
+	</div>
+	</jstl:if>
+
 	<br />
 	
 	<a href="user/display.do?userId=${user.id}" ><spring:message code="article.Autor"/></a>

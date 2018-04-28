@@ -16,7 +16,6 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 import services.ActorService;
-import services.AdvertisementService;
 import services.ArticleService;
 import services.NewspaperService;
 import services.UserService;
@@ -33,15 +32,13 @@ public class NewspaperController extends AbstractController {
 	// Services ---------------------------------------------------------------
 
 	@Autowired
-	private NewspaperService		newspaperService;
+	private NewspaperService	newspaperService;
 	@Autowired
-	private ArticleService			articleService;
+	private ArticleService		articleService;
 	@Autowired
-	private UserService				userService;
+	private UserService			userService;
 	@Autowired
-	private ActorService			actorService;
-	@Autowired
-	private AdvertisementService	advertisementService;
+	private ActorService		actorService;
 	@Autowired
 	private VolumeService			volumeService;
 
@@ -130,6 +127,7 @@ public class NewspaperController extends AbstractController {
 		final ModelAndView result;
 		result = new ModelAndView("newspaper/display");
 		final Newspaper newspaper;
+
 		newspaper = this.newspaperService.findOne(newspaperId);
 		result.addObject("newspaper", newspaper);
 		boolean mostrarArticles = true;

@@ -2,6 +2,7 @@
 package controllers;
 
 import java.util.Collection;
+import java.util.Random;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -11,12 +12,14 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 import services.ActorService;
+import services.AdvertisementService;
 import services.ArticleService;
 import services.CustomerService;
 import services.FollowUpService;
 import services.NewspaperService;
 import services.UserService;
 import domain.Actor;
+import domain.Advertisement;
 import domain.Article;
 import domain.Customer;
 import domain.FollowUp;
@@ -30,22 +33,25 @@ public class ArticleController extends AbstractController {
 	// Services ---------------------------------------------------------------
 
 	@Autowired
-	private ArticleService		articleService;
+	private ArticleService			articleService;
 
 	@Autowired
-	private UserService			userService;
+	private UserService				userService;
 
 	@Autowired
-	private NewspaperService	newspaperService;
+	private NewspaperService		newspaperService;
 
 	@Autowired
-	private FollowUpService		followUpService;
+	private FollowUpService			followUpService;
 
 	@Autowired
-	private ActorService		actorService;
+	private ActorService			actorService;
 
 	@Autowired
-	private CustomerService		customerService;
+	private CustomerService			customerService;
+
+	@Autowired
+	private AdvertisementService	advertisementService;
 
 
 	// Constructors -----------------------------------------------------------
@@ -89,6 +95,10 @@ public class ArticleController extends AbstractController {
 		Integer userId;
 		Collection<FollowUp> followups;
 		Collection<Newspaper> newspapers;
+		Collection<Advertisement> advertisements;
+		Advertisement advertisement;
+		Random rnd;
+		String banner;
 
 		userId = null;
 		subscribed = false;
@@ -97,6 +107,8 @@ public class ArticleController extends AbstractController {
 		user = this.userService.UserByArticle(articleId);
 		followups = this.followUpService.findByArticleId(articleId);
 		newspaper = this.newspaperService.findByArticleId(articleId);
+		advertisements = this.advertisementService.findByNewspaper(newspaper.getId());
+
 		result = new ModelAndView("article/display");
 		result.addObject("article", article);
 		result.addObject("user", user);
@@ -119,6 +131,15 @@ public class ArticleController extends AbstractController {
 			}
 
 		}
+
+		if (advertisements.size() > 0) {
+			rnd = new Random();
+			advertisement = (Advertisement) advertisements.toArray()[rnd.nextInt(advertisements.size())];
+			banner = advertisement.getBanner();
+			result.addObject("banner", banner);
+			result.addObject("targetPage", advertisement.getTargetPage());
+		}
+
 		result.addObject("privateNewspaper", privateNewspaper);
 		result.addObject("userId", userId);
 		result.addObject("subscribed", subscribed);
