@@ -11,6 +11,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.util.Assert;
 
 import repositories.CreditCardRepository;
+import domain.Actor;
 import domain.Agent;
 import domain.CreditCard;
 import domain.Customer;
@@ -154,12 +155,22 @@ public class CreditCardService {
 	}
 
 	public void subscribe(final SubscribeVolumeForm subscribeVolumeForm) {
-
 		Volume volume;
 		CreditCard creditCard;
 		Collection<Volume> aux;
 		volume = subscribeVolumeForm.getVolume();
 		creditCard = subscribeVolumeForm.getCreditCard();
+		Actor principal;
+		Customer customer;
+
+		principal = this.actorService.findByPrincipal();
+
+		Assert.isTrue(principal instanceof Customer);
+
+		customer = (Customer) principal;
+
+		Assert.isTrue(!creditCard.getVolumes().contains(volume));
+		Assert.isTrue(customer.getCreditCard().contains(creditCard));
 
 		aux = creditCard.getVolumes();
 		aux.add(volume);
