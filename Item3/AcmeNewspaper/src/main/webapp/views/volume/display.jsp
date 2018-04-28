@@ -21,7 +21,12 @@
 </security:authorize>
 
 <!-- Listing grid -->
-
+<jstl:if test="${removedNewspaper}">
+	<br>
+	<br>
+	<b><spring:message code="volume.removedNewspaper"/></b>
+	<br>
+</jstl:if>
 <display:table pagesize="5" class="displaytag"
 	name="volume.newspapers" requestURI="${requestURI }" id="row">
 	
@@ -51,9 +56,17 @@
 		<img src="${row.picture}" height="150" width="250" />
 	</display:column>
 
+	<security:authorize access="hasRole('USER')">
+		<jstl:if test="${userId!=null}">
+			<display:column>
+				<a href="user/volume/removeNewspaper.do?newspaperId=${row.id}&volumeId=${volume.id}">
+					<spring:message code="volume.removeNewspaper"/></a>
+			</display:column>
+		</jstl:if>
+	</security:authorize>
 	
 	</display:table>
-	</br>
+	<br>
 <security:authorize access="hasRole('USER')">
 	<jstl:if test="${userId!=null}">
 		<a href="user/volume/addNewspaper.do?volumeId=${volume.id}"><spring:message code="volume.addNewspaper"/></a>

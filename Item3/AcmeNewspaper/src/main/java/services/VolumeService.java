@@ -27,6 +27,9 @@ public class VolumeService {
 	@Autowired
 	private ActorService		actorService;
 
+	@Autowired
+	private NewspaperService	newspaperService;
+
 
 	//Constructors
 	public VolumeService() {
@@ -87,6 +90,7 @@ public class VolumeService {
 
 		return result;
 	}
+
 	public Collection<Volume> findByCustomerId(final int id) {
 		Collection<Volume> result;
 
@@ -102,6 +106,31 @@ public class VolumeService {
 		Assert.notNull(result);
 
 		return result;
+	}
+
+	public Volume addNewspaper(final Integer volumeId, final Integer newspaperId) {
+		Volume result, volume;
+		Newspaper newspaper;
+
+		volume = this.findOne(volumeId);
+		newspaper = this.newspaperService.findOne(newspaperId);
+		volume.addNewspapers(newspaper);
+		result = this.save(volume);
+
+		return result;
+	}
+
+	public Volume removeNewspaper(final int volumeId, final int newspaperId) {
+		Volume result, volume;
+		Newspaper newspaper;
+
+		volume = this.findOne(volumeId);
+		newspaper = this.newspaperService.findOne(newspaperId);
+		volume.removeNewspapers(newspaper);
+		result = this.save(volume);
+
+		return result;
+
 	}
 
 }

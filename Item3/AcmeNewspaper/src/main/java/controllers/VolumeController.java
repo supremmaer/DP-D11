@@ -10,7 +10,6 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
 import services.ActorService;
-import services.NewspaperService;
 import services.VolumeService;
 import domain.Actor;
 import domain.Customer;
@@ -23,13 +22,10 @@ public class VolumeController extends AbstractController {
 
 	//Service -----------------------------------------------------------------
 	@Autowired
-	private VolumeService		volumeService;
+	private VolumeService	volumeService;
 
 	@Autowired
-	private ActorService		actorService;
-
-	@Autowired
-	private NewspaperService	newspaperService;
+	private ActorService	actorService;
 
 
 	// Constructors -----------------------------------------------------------
@@ -60,7 +56,7 @@ public class VolumeController extends AbstractController {
 	}
 
 	@RequestMapping(value = "/display", method = RequestMethod.GET)
-	public ModelAndView display(final int volumeId) {
+	public ModelAndView display(final int volumeId, final Boolean removedNewspaper, final Boolean errorRemovedNewspaper) {
 		ModelAndView result;
 		Volume volume;
 		Actor actor;
@@ -85,6 +81,10 @@ public class VolumeController extends AbstractController {
 			}
 		}
 		result.addObject("subscribeable", subscribeable);
+		if (removedNewspaper != null)
+			result.addObject("removedNewspaper", removedNewspaper);
+		else if (errorRemovedNewspaper != null)
+			result.addObject("errorRemovedNewspaper", errorRemovedNewspaper);
 
 		return result;
 	}

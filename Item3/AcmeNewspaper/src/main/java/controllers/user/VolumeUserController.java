@@ -129,20 +129,30 @@ public class VolumeUserController extends AbstractController {
 	public ModelAndView addNewspaperSave(final Integer volumeId, final Integer newspaperId) {
 		ModelAndView result;
 		String errorMessage;
-		Volume volume;
-		Newspaper newspaper;
 
-		volume = this.volumeService.findOne(volumeId);
-		newspaper = this.newspaperService.findOne(newspaperId);
-		volume.addNewspapers(newspaper);
 		try {
-			this.volumeService.save(volume);
+			this.volumeService.addNewspaper(volumeId, newspaperId);
 			result = new ModelAndView("redirect:/volume/display.do?volumeId=" + volumeId);
 		} catch (final Throwable oops) {
 			errorMessage = this.error(oops.toString());
 			result = new ModelAndView("volume/addNewspaper");
 			result.addObject("message", errorMessage);
 			result.addObject("requestURI", "user/volume/addNewspaper.do");
+		}
+
+		return result;
+	}
+
+	@RequestMapping(value = "/removeNewspaper", method = RequestMethod.GET)
+	public ModelAndView removeNewspaper(@RequestParam final int volumeId, @RequestParam final int newspaperId) {
+		ModelAndView result;
+
+		result = new ModelAndView("redirect:/volume/display.do?volumeId=" + volumeId);
+		try {
+			this.volumeService.removeNewspaper(volumeId, newspaperId);
+			result.addObject("removedNewspaper", true);
+		} catch (final Throwable oops) {
+			result.addObject("errorRemovedNewspaper", true);
 		}
 
 		return result;
