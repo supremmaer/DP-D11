@@ -30,8 +30,8 @@
 <spring:message code="advertisement.banner" var="banner"/>
 <display:column property="banner" title="${banner}" sortable="false"/>
  
-<spring:message code="advertisement.targetPage" var="targetpage"/>
-<display:column property="targetpage" title="${targetpage}" sortable="false"/>
+<spring:message code="advertisement.targetPage" var="targetPage"/>
+<display:column property="targetPage" title="${targetPage}" sortable="false"/>
 
 <security:authorize access="hasRole('ADMIN')">
 	<display:column>

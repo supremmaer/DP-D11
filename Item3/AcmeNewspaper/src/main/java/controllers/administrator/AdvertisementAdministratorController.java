@@ -40,7 +40,7 @@ public class AdvertisementAdministratorController extends AbstractController {
 
 		advertisements = this.advertisementService.findTaboo();
 		result = new ModelAndView("advertisement/list");
-		result.addObject("advertisement", advertisements);
+		result.addObject("advertisements", advertisements);
 		result.addObject("requestURI", "administrator/advertisement/list.do");
 
 		return result;
