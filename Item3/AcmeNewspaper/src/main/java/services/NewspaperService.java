@@ -171,6 +171,15 @@ public class NewspaperService {
 		newspapers = this.newspaperRepository.findByAgentWithAdvertisements(id);
 		return newspapers;
 	}
+
+	public Collection<Newspaper> findByAgentWithoutAdvertisements(final int id) {
+		Collection<Newspaper> newspapers;
+		Collection<Newspaper> restar;
+		newspapers = this.newspaperRepository.findAll();
+		restar = this.newspaperRepository.findByAgentWithAdvertisements(id);
+		newspapers.removeAll(restar);
+		return newspapers;
+	}
 	//DASHBOARD
 
 	public Double averageArticlesPerNewspaper() {
@@ -232,6 +241,13 @@ public class NewspaperService {
 		}
 		return aux / users.size();
 
+	}
+
+	public Collection<Newspaper> findNewspaperWithAdvertisement() {
+		Collection<Newspaper> result;
+		result = this.newspaperRepository.findNewspaperWithAdvertisement();
+
+		return result;
 	}
 
 	//dashboard

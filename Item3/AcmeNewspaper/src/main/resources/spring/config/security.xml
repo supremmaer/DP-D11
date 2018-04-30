@@ -72,6 +72,8 @@
 		<security:intercept-url pattern="/agent/creditCard/create.do" access="hasRole('AGENT')" />
 		<security:intercept-url pattern="/agent/advertisement/create.do" access="hasRole('AGENT')" />
 		<security:intercept-url pattern="/agent/advertisement/edit.do" access="hasRole('AGENT')" />
+		<security:intercept-url pattern="/agent/newspaper/list.do" access="hasRole('AGENT')" />
+		<security:intercept-url pattern="/agent/newspaper/listNoAdv.do" access="hasRole('AGENT')" />	
 		
 		<security:intercept-url pattern="/user/followup/**" access="hasRole('USER')" />
 		
