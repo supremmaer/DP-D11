@@ -133,4 +133,7 @@ public class VolumeService {
 
 	}
 
+	public void flush() {
+		this.volumeRepository.flush();
+	}
 }
