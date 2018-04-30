@@ -5,6 +5,7 @@ import java.util.Collection;
 
 import javax.transaction.Transactional;
 
+import org.joda.time.DateTime;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.util.Assert;
@@ -61,6 +62,12 @@ public class AdvertisementService {
 	}
 
 	public Advertisement save(final Advertisement advertisement) {
+		final DateTime dt = new DateTime();
+		final int mes = advertisement.getCreditCard().getExpirationMonth();
+		final int anio = advertisement.getCreditCard().getExpirationYear();
+		Assert.isTrue(dt.getYear() <= anio);
+		if (dt.getYear() == anio)
+			Assert.isTrue(dt.getMonthOfYear() < mes);
 		Advertisement result;
 		Agent agent;
 		agent = (Agent) this.actorService.findByPrincipal();
