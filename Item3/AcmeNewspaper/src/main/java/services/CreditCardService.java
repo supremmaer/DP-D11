@@ -13,6 +13,7 @@ import org.springframework.util.Assert;
 
 import repositories.CreditCardRepository;
 import domain.Actor;
+import domain.Administrator;
 import domain.Agent;
 import domain.CreditCard;
 import domain.Customer;
@@ -94,6 +95,18 @@ public class CreditCardService {
 		this.customerService.save(customer);
 		return result;
 	}
+	public CreditCard saveByAdmin(final CreditCard creditCard) {
+		CreditCard result;
+		Actor principal;
+
+		principal = this.actorService.findByPrincipal();
+		Assert.isTrue(principal instanceof Administrator);
+
+		result = this.creditCardRepository.save(creditCard);
+
+		return result;
+
+	}
 
 	public CreditCard saveCCAgent(final CreditCard creditCard) {//El save para guardar creditcard para agentes
 
@@ -141,6 +154,9 @@ public class CreditCardService {
 
 	public Collection<CreditCard> findByAgent(final int agentid) {
 		return this.creditCardRepository.findByAgent(agentid);
+	}
+	public Collection<CreditCard> findByNewspaper(final int newspaperId) {
+		return this.creditCardRepository.findByNewspaper(newspaperId);
 	}
 
 	public SubscribeForm createForm(final Newspaper newspaper) {

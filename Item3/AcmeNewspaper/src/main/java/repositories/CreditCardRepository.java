@@ -18,4 +18,6 @@ public interface CreditCardRepository extends JpaRepository<CreditCard, Integer>
 	@Query("select c from CreditCard c where c.agent.id=?1")
 	Collection<CreditCard> findByAgent(int agentid);
 
+	@Query("select c from CreditCard c join c.newspapers n where n.id=?1")
+	Collection<CreditCard> findByNewspaper(int newspaperId);
 }

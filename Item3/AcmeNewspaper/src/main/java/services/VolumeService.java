@@ -90,6 +90,13 @@ public class VolumeService {
 
 		return result;
 	}
+	public Volume saveByAdmin(final Volume volume) {
+		Volume result;
+
+		result = this.volumeRepository.save(volume);
+
+		return result;
+	}
 
 	public Collection<Volume> findByCustomerId(final int id) {
 		Collection<Volume> result;
@@ -132,8 +139,24 @@ public class VolumeService {
 		return result;
 
 	}
+	public Volume removeNewspaperByAdmin(final int volumeId, final int newspaperId) {
+		Volume result, volume;
+		Newspaper newspaper;
+
+		volume = this.findOne(volumeId);
+		newspaper = this.newspaperService.findOne(newspaperId);
+		volume.removeNewspapers(newspaper);
+		result = this.saveByAdmin(volume);
+
+		return result;
+
+	}
 
 	public void flush() {
 		this.volumeRepository.flush();
+	}
+
+	public Collection<Volume> findByNewspaper(final int id) {
+		return this.volumeRepository.findByNewspaper(id);
 	}
 }

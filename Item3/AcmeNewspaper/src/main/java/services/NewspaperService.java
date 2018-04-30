@@ -14,9 +14,12 @@ import org.springframework.util.Assert;
 import repositories.NewspaperRepository;
 import domain.Actor;
 import domain.Administrator;
+import domain.Advertisement;
 import domain.Article;
+import domain.CreditCard;
 import domain.Newspaper;
 import domain.User;
+import domain.Volume;
 
 @Service
 @Transactional
@@ -24,17 +27,22 @@ public class NewspaperService {
 
 	//Managed Repository ----
 	@Autowired
-	private NewspaperRepository	newspaperRepository;
-	@Autowired
-	private ActorService		actorService;
-	@Autowired
-	private UserService			userService;
+	private NewspaperRepository		newspaperRepository;
 
 	@Autowired
-	private ArticleService		articleService;
-
+	private AdvertisementService	advertisementService;
 	@Autowired
-	private ConfigService		configService;
+	private ActorService			actorService;
+	@Autowired
+	private UserService				userService;
+	@Autowired
+	private CreditCardService		creditCardService;
+	@Autowired
+	private ArticleService			articleService;
+	@Autowired
+	private VolumeService			volumeService;
+	@Autowired
+	private ConfigService			configService;
 
 
 	//Constructors
@@ -64,6 +72,9 @@ public class NewspaperService {
 		Actor principal;
 		User user;
 		Collection<Newspaper> newspapers;
+		Collection<Advertisement> advertisements;
+		Collection<CreditCard> creditCards;
+		Collection<Volume> volumes;
 
 		principal = this.actorService.findByPrincipal();
 		Assert.isTrue(principal instanceof Administrator);
@@ -71,9 +82,21 @@ public class NewspaperService {
 		newspapers = user.getNewspapers();
 		newspapers.remove(newspaper);
 		user.setNewspapers(newspapers);
+		advertisements = this.advertisementService.findByNewspaper(newspaper.getId());
+		creditCards = this.creditCardService.findByNewspaper(newspaper.getId());
+		volumes = this.volumeService.findByNewspaper(newspaper.getId());
 		this.userService.save(user);
 		for (final Article a : newspaper.getArticles())
 			this.articleService.deleteByNewspaper(a);
+		for (final CreditCard c : creditCards) {
+			c.getNewspapers().remove(newspaper);
+			this.creditCardService.saveByAdmin(c);
+		}
+		for (final Volume v : volumes)
+			this.volumeService.removeNewspaperByAdmin(v.getId(), newspaper.getId());
+		for (final Advertisement a : advertisements)
+			this.advertisementService.delete(a);
+
 		this.newspaperRepository.delete(newspaper);
 
 	}
