@@ -33,6 +33,9 @@ public interface NewspaperRepository extends JpaRepository<Newspaper, Integer> {
 	@Query("select n from Newspaper n where n.publicationDate!=null")
 	Collection<Newspaper> findAllPublished();
 
+	@Query("select distinct a.newspaper from Advertisement a where a.agent.id=?1")
+	Collection<Newspaper> findByAgentWithAdvertisements(int id);
+
 	//dashboard
 
 	@Query("select avg(n.articles.size) from Newspaper n")

@@ -124,6 +124,10 @@ public class CreditCardService {
 		return this.creditCardRepository.findByCustomer(customerid);
 	}
 
+	public Collection<CreditCard> findByAgent(final int agentid) {
+		return this.creditCardRepository.findByAgent(agentid);
+	}
+
 	public SubscribeForm createForm(final Newspaper newspaper) {
 		SubscribeForm result;
 

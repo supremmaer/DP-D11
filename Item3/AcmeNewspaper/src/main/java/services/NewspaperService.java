@@ -165,6 +165,12 @@ public class NewspaperService {
 
 		return newspapers;
 	}
+
+	public Collection<Newspaper> findByAgentWithAdvertisements(final int id) {
+		Collection<Newspaper> newspapers;
+		newspapers = this.newspaperRepository.findByAgentWithAdvertisements(id);
+		return newspapers;
+	}
 	//DASHBOARD
 
 	public Double averageArticlesPerNewspaper() {

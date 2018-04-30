@@ -11,17 +11,26 @@ import org.springframework.util.Assert;
 
 import repositories.AdvertisementRepository;
 import domain.Advertisement;
+import domain.Agent;
+import domain.CreditCard;
+import domain.Newspaper;
 
 @Service
 @Transactional
 public class AdvertisementService {
 
-	@Autowired
-	private ConfigService			configService;
-
 	//Managed Repository ----
 	@Autowired
 	private AdvertisementRepository	advertisementRepository;
+
+	@Autowired
+	private ConfigService			configService;
+
+	@Autowired
+	private ActorService			actorService;
+
+	@Autowired
+	private CreditCardService		creditCardService;
 
 
 	//Constructors
@@ -53,8 +62,19 @@ public class AdvertisementService {
 
 	public Advertisement save(final Advertisement advertisement) {
 		Advertisement result;
-
+		Agent agent;
+		agent = (Agent) this.actorService.findByPrincipal();
+		advertisement.setAgent(agent);
 		result = this.advertisementRepository.save(advertisement);
+
+		final Newspaper newspaper = advertisement.getNewspaper();
+		final CreditCard creditCard = advertisement.getCreditCard();
+
+		final Collection<Newspaper> aux = creditCard.getNewspapers();
+		aux.add(newspaper);
+		creditCard.setNewspapers(aux);
+		this.creditCardService.saveAddNewspaper(creditCard);
+
 		this.isTaboo(result.getTitle(), result);
 		this.isTaboo(result.getBanner(), result);
 		this.isTaboo(result.getTargetPage(), result);

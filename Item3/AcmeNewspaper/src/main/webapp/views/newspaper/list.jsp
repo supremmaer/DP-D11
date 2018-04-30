@@ -81,6 +81,13 @@
 			</jstl:if>
 		</display:column>
 	</security:authorize>
+	
+	<security:authorize access="hasRole('AGENT')">
+		<display:column sortable="false">
+				<a href="agent/advertisement/create.do?newspaperId=${row.id}"><spring:message
+						code="newspaper.advertisement" /></a>
+		</display:column>
+	</security:authorize>
 
 	<security:authorize access="hasRole('ADMIN')">
 		<display:column>
@@ -89,4 +96,5 @@
 		</display:column>
 	</security:authorize>
 </display:table>
+
 
