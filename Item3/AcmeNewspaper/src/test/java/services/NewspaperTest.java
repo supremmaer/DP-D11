@@ -96,7 +96,16 @@ public class NewspaperTest extends AbstractTest{
 	public void removeDriver() {
 		final Object[][] testingData = {
 			{ // 7.2 - An admin removes a newspaper
-				"admin","newspaper9",null
+				"admin","newspaper1",null
+			},
+			{ // 7.2 - An admin removes a newspaper
+				"admin","newspaper2",null
+			},
+			{ // 7.2 - An admin removes a newspaper
+				"admin","newspaper3",null
+			},
+			{ // 7.2 - An admin removes a newspaper
+				"admin","newspaper4",null
 			},
 			{ // A user attempts to remove a newspaper
 				"user1","newspaper9",IllegalArgumentException.class

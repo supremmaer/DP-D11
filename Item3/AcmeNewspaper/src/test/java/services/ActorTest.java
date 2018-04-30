@@ -120,7 +120,8 @@ public class ActorTest extends AbstractTest {
 			this.actorService.flush();
 
 		} catch (final Throwable oops) {
-			System.out.println(name + " " + oops.getClass());
+//			Para el debugueo activar la siguiente linea
+//			System.out.println(name + " " + oops.getClass());
 			caught = oops.getClass();
 		}
 
