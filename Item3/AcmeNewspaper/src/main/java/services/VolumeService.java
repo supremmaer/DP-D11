@@ -159,4 +159,12 @@ public class VolumeService {
 	public Collection<Volume> findByNewspaper(final int id) {
 		return this.volumeRepository.findByNewspaper(id);
 	}
+
+	//dashboard
+
+	public Double averageNewspaperPerVolumen() {
+		return this.volumeRepository.averageNewspaperPerVolumen();
+	}
+
+	//dashboard
 }

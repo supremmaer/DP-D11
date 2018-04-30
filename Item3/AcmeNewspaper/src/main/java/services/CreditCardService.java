@@ -214,4 +214,12 @@ public class CreditCardService {
 
 	}
 
+	//dashboard
+
+	public Double ratioVolumensVsNewspaperSubs() {
+		return this.creditCardRepository.ratioVolumensVsNewspaperSubs();
+	}
+
+	//dashboard
+
 }

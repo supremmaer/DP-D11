@@ -20,4 +20,7 @@ public interface CreditCardRepository extends JpaRepository<CreditCard, Integer>
 
 	@Query("select c from CreditCard c join c.newspapers n where n.id=?1")
 	Collection<CreditCard> findByNewspaper(int newspaperId);
+
+	@Query("select sum(c.volumes.size)*100.0/(select sum(cu.newspapers.size) from CreditCard cu) from CreditCard c")
+	Double ratioVolumensVsNewspaperSubs();
 }

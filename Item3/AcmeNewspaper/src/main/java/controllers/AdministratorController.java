@@ -18,6 +18,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
+import services.AdvertisementService;
 import services.ArticleService;
 import services.ChirpService;
 import services.CreditCardService;
@@ -25,6 +26,7 @@ import services.CustomerService;
 import services.FollowUpService;
 import services.NewspaperService;
 import services.UserService;
+import services.VolumeService;
 import domain.Newspaper;
 
 @Controller
@@ -34,25 +36,31 @@ public class AdministratorController extends AbstractController {
 	// Services --------------------------------------------------------
 
 	@Autowired
-	private UserService			userService;
+	private UserService				userService;
 
 	@Autowired
-	private CustomerService		customerService;
+	private CustomerService			customerService;
 
 	@Autowired
-	private NewspaperService	newspaperService;
+	private NewspaperService		newspaperService;
 
 	@Autowired
-	private ArticleService		articleService;
+	private ArticleService			articleService;
 
 	@Autowired
-	private FollowUpService		followUpService;
+	private FollowUpService			followUpService;
 
 	@Autowired
-	private ChirpService		chirpService;
+	private ChirpService			chirpService;
 
 	@Autowired
-	private CreditCardService	creditCardService;
+	private CreditCardService		creditCardService;
+
+	@Autowired
+	private AdvertisementService	advertisementService;
+
+	@Autowired
+	private VolumeService			volumeService;
 
 
 	// Constructors -----------------------------------------------------------
@@ -120,6 +128,12 @@ public class AdministratorController extends AbstractController {
 		Double ratioSubsVSTotal = 0.0;
 		Double avgRatioPrivateVsPublic = 0.0;
 
+		Double ratioNewsWithVsWithoutAdvertisements = 0.0;
+		Double ratioAdvertisementsTaboo = 0.0;
+
+		Double averageNewspaperPerVolumen = 0.0;
+		Double ratioVolumensVsNewspaperSubs = 0.0;
+
 		if (this.newspaperService.findAll().size() > 0 && this.userService.findAll().size() > 0 && this.articleService.findAll().size() > 0) {
 
 			avgNewspaperperUser = this.userService.averageNewspaperperUser();
@@ -158,10 +172,22 @@ public class AdministratorController extends AbstractController {
 			avgArticlePerPrivateNews = this.newspaperService.averageArticlesPerPrivateNewspaper();
 			avgArticlePerPublicNews = this.newspaperService.averageArticlesPerPublicNewspaper();
 
-			if (this.customerService.findAll().size() > 0 && this.creditCardService.findAll().size() > 0)
+			if (this.customerService.findAll().size() > 0 && this.creditCardService.findAll().size() > 0) {
 				ratioSubsVSTotal = this.customerService.ratioSubscriptorsVScustomer();
 
+				if (this.volumeService.findAll().size() > 0) {
+					ratioVolumensVsNewspaperSubs = this.creditCardService.ratioVolumensVsNewspaperSubs();
+					averageNewspaperPerVolumen = this.volumeService.averageNewspaperPerVolumen();
+				}
+			}
+
 			avgRatioPrivateVsPublic = this.newspaperService.avgRatioPrivateVsPublicPerUser();
+
+			if (this.advertisementService.findAll().size() > 0) {
+
+				ratioNewsWithVsWithoutAdvertisements = this.newspaperService.ratioNewsWithVsWithoutAdvertisements();
+				ratioAdvertisementsTaboo = this.advertisementService.ratioAdvertisementsTaboo();
+			}
 		}
 
 		result = new ModelAndView("administrator/dashboard");
@@ -198,6 +224,12 @@ public class AdministratorController extends AbstractController {
 
 		result.addObject("ratioSubsVSTotal", ratioSubsVSTotal);
 		result.addObject("avgRatioPrivateVsPublic", avgRatioPrivateVsPublic);
+
+		result.addObject("ratioNewsWithVsWithoutAdvertisements", ratioNewsWithVsWithoutAdvertisements);
+		result.addObject("ratioAdvertisementsTaboo", ratioAdvertisementsTaboo);
+
+		result.addObject("averageNewspaperPerVolumen", averageNewspaperPerVolumen);
+		result.addObject("ratioVolumensVsNewspaperSubs", ratioVolumensVsNewspaperSubs);
 
 		result.addObject("requestURI", "administrator/dashboard.do");
 

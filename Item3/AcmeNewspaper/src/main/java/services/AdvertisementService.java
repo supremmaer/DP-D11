@@ -129,4 +129,12 @@ public class AdvertisementService {
 
 	}
 
+	//Dashboard
+
+	public Double ratioAdvertisementsTaboo() {
+		return this.advertisementRepository.ratioAdvertisementsTaboo();
+	}
+
+	//Dashboard
+
 }

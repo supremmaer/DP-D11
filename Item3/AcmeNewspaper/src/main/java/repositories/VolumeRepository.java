@@ -21,4 +21,7 @@ public interface VolumeRepository extends JpaRepository<Volume, Integer> {
 	@Query("select v from Volume v join v.newspapers n where n.id=?1")
 	Collection<Volume> findByNewspaper(int id);
 
+	@Query("select avg(v.newspapers.size) from Volume v")
+	Double averageNewspaperPerVolumen();
+
 }

@@ -18,4 +18,7 @@ public interface AdvertisementRepository extends JpaRepository<Advertisement, In
 	@Query("select a from Advertisement a where a.taboo=1")
 	Collection<Advertisement> findTaboo();
 
+	@Query("select count(a)*100.0/(select count(na) from Advertisement na) from Advertisement a where a.taboo=true")
+	Double ratioAdvertisementsTaboo();
+
 }

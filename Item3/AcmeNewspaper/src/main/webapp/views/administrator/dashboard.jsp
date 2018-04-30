@@ -105,5 +105,21 @@
 <fmt:formatNumber value="${avgRatioPrivateVsPublic}" pattern="####0.00"/>
 <br/><br/><br/>
 
+<b><spring:message code="administrator.RatioWVWA"/></b>
+<fmt:formatNumber value="${ratioNewsWithVsWithoutAdvertisements}" pattern="####0.00"/>
+<br/>
+<b><spring:message code="administrator.RatioAT"/></b>
+<fmt:formatNumber value="${ratioAdvertisementsTaboo}" pattern="####0.00"/>
+<br/><br/><br/>
+
+<b><spring:message code="administrator.avgNPV"/></b>
+<fmt:formatNumber value="${averageNewspaperPerVolumen}" pattern="####0.00"/>
+<br/>
+<b><spring:message code="administrator.RatioVVNS"/></b>
+<fmt:formatNumber value="${ratioVolumensVsNewspaperSubs}" pattern="####0.00"/>
+<br/><br/><br/>
+
 </security:authorize>
+
+
 	

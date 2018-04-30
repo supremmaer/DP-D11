@@ -273,5 +273,14 @@ public class NewspaperService {
 		return result;
 	}
 
+	public Double ratioNewsWithVsWithoutAdvertisements() {
+		Double result;
+		final Collection<Newspaper> with = this.findNewspaperWithAdvertisement();
+		final Collection<Newspaper> without = this.findAll();
+		without.removeAll(with);
+		result = 100.0 * with.size() / without.size() * 1.0;
+		return result;
+	}
+
 	//dashboard
 }
