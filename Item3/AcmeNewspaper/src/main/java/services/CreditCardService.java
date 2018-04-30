@@ -6,6 +6,7 @@ import java.util.Collection;
 
 import javax.transaction.Transactional;
 
+import org.joda.time.DateTime;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.util.Assert;
@@ -74,6 +75,13 @@ public class CreditCardService {
 	public CreditCard save(final CreditCard creditCard) {
 		CreditCard result;
 
+		final DateTime dt = new DateTime();
+		final int mes = creditCard.getExpirationMonth();
+		final int anio = creditCard.getExpirationYear();
+		Assert.isTrue(dt.getYear() <= anio);
+		if (dt.getYear() == anio)
+			Assert.isTrue(dt.getMonthOfYear() < mes);
+
 		Collection<CreditCard> aux;
 		Customer customer;
 		customer = (Customer) this.actorService.findByPrincipal();
@@ -88,6 +96,13 @@ public class CreditCardService {
 	}
 
 	public CreditCard saveCCAgent(final CreditCard creditCard) {//El save para guardar creditcard para agentes
+
+		final DateTime dt = new DateTime();
+		final int mes = creditCard.getExpirationMonth();
+		final int anio = creditCard.getExpirationYear();
+		Assert.isTrue(dt.getYear() <= anio);
+		if (dt.getYear() == anio)
+			Assert.isTrue(dt.getMonthOfYear() < mes);
 
 		CreditCard result;
 		Agent agent;
