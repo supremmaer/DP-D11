@@ -79,9 +79,9 @@ public class CreditCardService {
 		final DateTime dt = new DateTime();
 		final int mes = creditCard.getExpirationMonth();
 		final int anio = creditCard.getExpirationYear();
-		Assert.isTrue(dt.getYear() <= anio);
+		Assert.isTrue(dt.getYear() <= anio, "creditCard.error.expired");
 		if (dt.getYear() == anio)
-			Assert.isTrue(dt.getMonthOfYear() < mes);
+			Assert.isTrue(dt.getMonthOfYear() < mes, "creditCard.error.expired");
 
 		Collection<CreditCard> aux;
 		Customer customer;
@@ -113,9 +113,9 @@ public class CreditCardService {
 		final DateTime dt = new DateTime();
 		final int mes = creditCard.getExpirationMonth();
 		final int anio = creditCard.getExpirationYear();
-		Assert.isTrue(dt.getYear() <= anio);
+		Assert.isTrue(dt.getYear() <= anio, "creditCard.error.expired");
 		if (dt.getYear() == anio)
-			Assert.isTrue(dt.getMonthOfYear() < mes);
+			Assert.isTrue(dt.getMonthOfYear() < mes, "creditCard.error.expired");
 
 		CreditCard result;
 		Agent agent;

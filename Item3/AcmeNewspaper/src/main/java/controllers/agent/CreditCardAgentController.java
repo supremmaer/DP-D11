@@ -57,8 +57,23 @@ public class CreditCardAgentController extends AbstractController {
 				this.creditCardService.saveCCAgent(creditCard);
 				result = new ModelAndView("redirect:/welcome/index.do");
 			} catch (final Throwable oops) {
-				result = this.createEditModelAndView(creditCard, "creditCard.commit.error");
+				String errorMessage = "creditCard.commit.error";
+				errorMessage = this.error(oops.toString());
+				if (oops.getMessage().contains("message.error"))
+					errorMessage = oops.getMessage();
+				result = this.createEditModelAndView(creditCard, errorMessage);
 			}
+
+		return result;
+	}
+
+	private String error(final String s) {
+		String result;
+
+		if (s.contains("creditCard.error.expired"))
+			result = "creditCard.error.expired";
+		else
+			result = "creditCard.commit.error";
 
 		return result;
 	}

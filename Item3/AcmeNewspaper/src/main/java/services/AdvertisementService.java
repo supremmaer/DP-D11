@@ -65,9 +65,9 @@ public class AdvertisementService {
 		final DateTime dt = new DateTime();
 		final int mes = advertisement.getCreditCard().getExpirationMonth();
 		final int anio = advertisement.getCreditCard().getExpirationYear();
-		Assert.isTrue(dt.getYear() <= anio);
+		Assert.isTrue(dt.getYear() <= anio, "creditCard.error.expired");
 		if (dt.getYear() == anio)
-			Assert.isTrue(dt.getMonthOfYear() < mes);
+			Assert.isTrue(dt.getMonthOfYear() < mes, "creditCard.error.expired");
 		Advertisement result;
 		Agent agent;
 		agent = (Agent) this.actorService.findByPrincipal();
