@@ -65,7 +65,7 @@
 		value="<spring:message code="creditCard.save" />" />
 		 
 	<spring:message code="creditCard.cancel" var="cancel"/>
-	<input type="button" name="cancel" value="${cancel}" onclick="javascript:relativeRedir('newspaper/list.do');" />
+	<input type="button" name="cancel" value="${cancel}" onclick="javascript:relativeRedir('');" />
 	<br />	
 	
 </form:form>
