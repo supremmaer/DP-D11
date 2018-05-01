@@ -40,7 +40,7 @@ public class NewspaperController extends AbstractController {
 	@Autowired
 	private ActorService		actorService;
 	@Autowired
-	private VolumeService			volumeService;
+	private VolumeService		volumeService;
 
 
 	// Constructors -----------------------------------------------------------
