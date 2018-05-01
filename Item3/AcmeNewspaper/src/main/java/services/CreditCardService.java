@@ -6,7 +6,6 @@ import java.util.Collection;
 
 import javax.transaction.Transactional;
 
-import org.joda.time.DateTime;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.util.Assert;
@@ -75,13 +74,13 @@ public class CreditCardService {
 
 	public CreditCard save(final CreditCard creditCard) {
 		CreditCard result;
-
-		final DateTime dt = new DateTime();
-		final int mes = creditCard.getExpirationMonth();
-		final int anio = creditCard.getExpirationYear();
-		Assert.isTrue(dt.getYear() <= anio, "creditCard.error.expired");
-		if (dt.getYear() == anio)
-			Assert.isTrue(dt.getMonthOfYear() < mes, "creditCard.error.expired");
+		//TODO: BUG INTENCIONAL LA CREDITCARD ES CADUCABLE
+		//		final DateTime dt = new DateTime();
+		//		final int mes = creditCard.getExpirationMonth();
+		//		final int anio = creditCard.getExpirationYear();
+		//		Assert.isTrue(dt.getYear() <= anio, "creditCard.error.expired");
+		//		if (dt.getYear() == anio)
+		//			Assert.isTrue(dt.getMonthOfYear() < mes, "creditCard.error.expired");
 
 		Collection<CreditCard> aux;
 		Customer customer;
@@ -109,13 +108,13 @@ public class CreditCardService {
 	}
 
 	public CreditCard saveCCAgent(final CreditCard creditCard) {//El save para guardar creditcard para agentes
-
-		final DateTime dt = new DateTime();
-		final int mes = creditCard.getExpirationMonth();
-		final int anio = creditCard.getExpirationYear();
-		Assert.isTrue(dt.getYear() <= anio, "creditCard.error.expired");
-		if (dt.getYear() == anio)
-			Assert.isTrue(dt.getMonthOfYear() < mes, "creditCard.error.expired");
+		//TODO: BUG INTENCIONAL LA CREDITCARD ES CADUCABLE
+		//		final DateTime dt = new DateTime();
+		//		final int mes = creditCard.getExpirationMonth();
+		//		final int anio = creditCard.getExpirationYear();
+		//		Assert.isTrue(dt.getYear() <= anio, "creditCard.error.expired");
+		//		if (dt.getYear() == anio)
+		//			Assert.isTrue(dt.getMonthOfYear() < mes, "creditCard.error.expired");
 
 		CreditCard result;
 		Agent agent;
@@ -178,9 +177,13 @@ public class CreditCardService {
 	}
 
 	public void subscribe(final SubscribeForm subscribeForm) {
-
+		Customer customer;
+		customer = (Customer) this.actorService.findByPrincipal();
+		final Collection<CreditCard> auxc = customer.getCreditCard();
 		final Newspaper newspaper = subscribeForm.getNewspaper();
 		final CreditCard creditCard = subscribeForm.getCreditCard();
+
+		Assert.isTrue(auxc.contains(creditCard));
 
 		final Collection<Newspaper> aux = creditCard.getNewspapers();
 		aux.add(newspaper);

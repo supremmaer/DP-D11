@@ -122,9 +122,9 @@
 					<security:authorize access="hasRole('AGENT')">
 						<li><a href="agent/creditCard/create.do"><spring:message
 									code="master.page.creditcard.create" /></a></li>
-						<li><a href="agent/newspaper/list.do"><spring:message
+						<li><a href="agent/newspaper/listNoAdv.do"><spring:message 
 									code="master.page.agent.newspaperwithadv" /></a></li>
-						<li><a href="agent/newspaper/listNoAdv.do"><spring:message
+						<li><a href="agent/newspaper/list.do"><spring:message
 									code="master.page.agent.newspaperwithoutadv" /></a></li>
 					</security:authorize>
 					<li><a href="j_spring_security_logout"><spring:message
