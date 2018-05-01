@@ -97,6 +97,16 @@
 		<security:intercept-url pattern="/profile/action-3.do" access="isAuthenticated()" /> 
 		
 		<security:intercept-url pattern="/law/terms-conditions.do" access="permitAll" /> 
+		
+		<security:intercept-url pattern="/actor/message/list.do" access="isAuthenticated()" /> 
+		<security:intercept-url pattern="/actor/message/display.do" access="isAuthenticated()" />
+		<security:intercept-url pattern="/actor/message/delete.do" access="isAuthenticated()" />
+		<security:intercept-url pattern="/actor/message/create.do" access="isAuthenticated()" />
+		<security:intercept-url pattern="/actor/message/send.do" access="isAuthenticated()" />
+		<security:intercept-url pattern="/actor/message/move.do" access="isAuthenticated()" />
+		<security:intercept-url pattern="/actor/folder/edit.do" access="isAuthenticated()" /> 
+		<security:intercept-url pattern="/actor/folder/create.do" access="isAuthenticated()" /> 
+		<security:intercept-url pattern="/administrator/notification.do" access="hasRole('ADMIN')" />
 	
 		<security:intercept-url pattern="/**" access="hasRole('NONE')" requires-channel="http"/>
 

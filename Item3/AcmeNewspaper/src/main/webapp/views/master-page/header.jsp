@@ -87,6 +87,8 @@
 			</a>
 				<ul>
 					<li class="arrow"></li>
+					<li><a href="actor/message/list.do"><spring:message
+								code="master.page.profile.messages" /></a></li>
 					<security:authorize access="hasRole('ADMIN')">
 						<li><a href="administrator/chirp/list.do"><spring:message
 									code="master.page.administrator.chirps" /></a></li>
@@ -96,12 +98,14 @@
 									code="master.page.administrator.articles" /></a></li>
 						<li><a href="administrator/config/display.do"><spring:message
 									code="master.page.administrator.tabooWords" /></a></li>
-						<li><a href="administrator/advertisement/list.do""><spring:message
+						<li><a href="administrator/advertisement/list.do"><spring:message
 									code="master.page.administrator.advertisementsTaboo" /></a></li>
 						<li><a href="actor/create.do?actorType=ADMIN"><spring:message
 									code="master.page.createAdmin" /></a></li>
 						<li><a href="administrator/dashboard.do"><spring:message
 									code="master.page.administrator.dashboard" /></a></li>
+						<li><a href="administrator/notification.do"><spring:message
+									code="master.page.administrator.notification" /></a></li>
 					</security:authorize>
 					<security:authorize access="hasRole('USER')">
 						<li><a href="user/chirp/list.do"><spring:message
