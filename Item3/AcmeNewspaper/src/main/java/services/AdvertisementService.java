@@ -128,6 +128,9 @@ public class AdvertisementService {
 		return result;
 
 	}
+	public void flush() {
+		this.advertisementRepository.flush();
+	}
 
 	//Dashboard
 
