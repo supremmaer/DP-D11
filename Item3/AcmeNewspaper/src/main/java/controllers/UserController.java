@@ -90,10 +90,16 @@ public class UserController extends AbstractController {
 			if (actor instanceof User)
 				result.addObject("userId", id);
 		}
+
 		result.addObject("user", user);
 		result.addObject("articles", articles);
+
+		//TODO: INTENTIONAL BUG: Se muestra 2 veces la lista de siguiendo
+		// en vez siguiendo y seguidores
+		// El Bueno: result.addObject("followers, followers");
 		result.addObject("following", following);
-		result.addObject("followers", followers);
+		//El BUG
+		result.addObject("followers", following);
 		result.addObject("chirps", chirps);
 		result.addObject("requestURI", "user/display.do?userId=" + userId);
 		return result;

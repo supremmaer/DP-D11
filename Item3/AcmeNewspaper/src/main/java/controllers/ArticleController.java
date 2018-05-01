@@ -97,7 +97,7 @@ public class ArticleController extends AbstractController {
 		Collection<Newspaper> newspapers;
 		Collection<Advertisement> advertisements;
 		Advertisement advertisement;
-		Random rnd;
+		final Random rnd;
 		String banner;
 
 		userId = null;
@@ -131,10 +131,17 @@ public class ArticleController extends AbstractController {
 			}
 
 		}
+		//TODO: INTENTIONAL BUG: Solo se coge el primer advertisement, da igual si se cogen más
+		//		if (advertisements.size() > 0) {
+		//			rnd = new Random();
+		//			advertisement = (Advertisement) advertisements.toArray()[rnd.nextInt(advertisements.size())];
+		//			banner = advertisement.getBanner();
+		//			result.addObject("banner", banner);
+		//			result.addObject("targetPage", advertisement.getTargetPage());
+		//		}
 
 		if (advertisements.size() > 0) {
-			rnd = new Random();
-			advertisement = (Advertisement) advertisements.toArray()[rnd.nextInt(advertisements.size())];
+			advertisement = (Advertisement) advertisements.toArray()[0];
 			banner = advertisement.getBanner();
 			result.addObject("banner", banner);
 			result.addObject("targetPage", advertisement.getTargetPage());
