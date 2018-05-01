@@ -43,6 +43,13 @@ public class ConfigAdministratorController extends AbstractController {
 		Config config;
 
 		config = this.configService.findConfiguration();
+		/*
+		 * TODO Bug Intencional: Añade a la lista de taboo words la palabra "pene" sin embargo solo es un añadido visual, realmente no es una tabooword.
+		 * No puede ser eliminado ni se guardará como taboo objetos que contengan "pene"
+		 * Para arreglarlo solo eliminar la siguiente linea.
+		 */
+		config.getTabooWords().add("pene");
+
 		result = new ModelAndView("config/display");
 		result.addObject("config", config);
 		result.addObject("requestURI", "administrator/config/display.do");

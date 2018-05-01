@@ -57,16 +57,17 @@ public class ChirpService {
 	}
 
 	public void delete(final Chirp chirp) {
-		User user;
-		Collection<Chirp> chirps;
+		final User user;
+		final Collection<Chirp> chirps;
 
+		//TODO Bug Intencional: El delete de chirp no hace absolutamente nada. Para arreglarlo solo hay que descomentar lo comentado
 		Assert.isTrue(this.actorService.findByPrincipal() instanceof Administrator);
-		user = this.userService.findByChirpId(chirp.getId());
-		chirps = user.getChirps();
-		chirps.remove(chirp);
-		user.setChirps(chirps);
-		this.userService.save(user);
-		this.chirpRepository.delete(chirp);
+		//		user = this.userService.findByChirpId(chirp.getId());
+		//		chirps = user.getChirps();
+		//		chirps.remove(chirp);
+		//		user.setChirps(chirps);
+		//		this.userService.save(user);
+		//		this.chirpRepository.delete(chirp);
 
 	}
 
