@@ -5,6 +5,7 @@ import java.util.Collection;
 
 import javax.transaction.Transactional;
 
+import org.joda.time.DateTime;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.util.Assert;
@@ -67,13 +68,12 @@ public class AdvertisementService {
 		agent = (Agent) this.actorService.findByPrincipal();
 		Assert.isTrue(agent.getId() == creditCard.getAgent().getId());
 
-		//TODO: BUG INTENCIONAL, LA CREDITCARD ES CADUCA
-		//final DateTime dt = new DateTime();
-		//final int mes = advertisement.getCreditCard().getExpirationMonth();
-		//final int anio = advertisement.getCreditCard().getExpirationYear();
-		//		Assert.isTrue(dt.getYear() <= anio, "creditCard.error.expired");
-		//		if (dt.getYear() == anio)
-		//			Assert.isTrue(dt.getMonthOfYear() < mes, "creditCard.error.expired");
+		final DateTime dt = new DateTime();
+		final int mes = advertisement.getCreditCard().getExpirationMonth();
+		final int anio = advertisement.getCreditCard().getExpirationYear();
+		Assert.isTrue(dt.getYear() <= anio, "creditCard.error.expired");
+		if (dt.getYear() == anio)
+			Assert.isTrue(dt.getMonthOfYear() < mes, "creditCard.error.expired");
 		Advertisement result;
 
 		advertisement.setAgent(agent);

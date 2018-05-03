@@ -6,6 +6,7 @@ import java.util.Collection;
 
 import javax.transaction.Transactional;
 
+import org.joda.time.DateTime;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.util.Assert;
@@ -74,13 +75,13 @@ public class CreditCardService {
 
 	public CreditCard save(final CreditCard creditCard) {
 		CreditCard result;
-		//TODO: BUG INTENCIONAL LA CREDITCARD ES CADUCABLE
-		//		final DateTime dt = new DateTime();
-		//		final int mes = creditCard.getExpirationMonth();
-		//		final int anio = creditCard.getExpirationYear();
-		//		Assert.isTrue(dt.getYear() <= anio, "creditCard.error.expired");
-		//		if (dt.getYear() == anio)
-		//			Assert.isTrue(dt.getMonthOfYear() < mes, "creditCard.error.expired");
+
+		final DateTime dt = new DateTime();
+		final int mes = creditCard.getExpirationMonth();
+		final int anio = creditCard.getExpirationYear();
+		Assert.isTrue(dt.getYear() <= anio, "creditCard.error.expired");
+		if (dt.getYear() == anio)
+			Assert.isTrue(dt.getMonthOfYear() < mes, "creditCard.error.expired");
 
 		Collection<CreditCard> aux;
 		Customer customer;
@@ -108,13 +109,13 @@ public class CreditCardService {
 	}
 
 	public CreditCard saveCCAgent(final CreditCard creditCard) {//El save para guardar creditcard para agentes
-		//TODO: BUG INTENCIONAL LA CREDITCARD ES CADUCABLE
-		//		final DateTime dt = new DateTime();
-		//		final int mes = creditCard.getExpirationMonth();
-		//		final int anio = creditCard.getExpirationYear();
-		//		Assert.isTrue(dt.getYear() <= anio, "creditCard.error.expired");
-		//		if (dt.getYear() == anio)
-		//			Assert.isTrue(dt.getMonthOfYear() < mes, "creditCard.error.expired");
+
+		final DateTime dt = new DateTime();
+		final int mes = creditCard.getExpirationMonth();
+		final int anio = creditCard.getExpirationYear();
+		Assert.isTrue(dt.getYear() <= anio, "creditCard.error.expired");
+		if (dt.getYear() == anio)
+			Assert.isTrue(dt.getMonthOfYear() < mes, "creditCard.error.expired");
 
 		CreditCard result;
 		Agent agent;
@@ -128,6 +129,12 @@ public class CreditCardService {
 
 	public CreditCard saveAddNewspaper(final CreditCard creditCard) {
 		CreditCard result;
+		final DateTime dt = new DateTime();
+		final int mes = creditCard.getExpirationMonth();
+		final int anio = creditCard.getExpirationYear();
+		Assert.isTrue(dt.getYear() <= anio, "creditCard.error.expired");
+		if (dt.getYear() == anio)
+			Assert.isTrue(dt.getMonthOfYear() < mes, "creditCard.error.expired");
 
 		result = this.creditCardRepository.save(creditCard);
 
