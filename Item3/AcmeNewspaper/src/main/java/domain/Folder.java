@@ -19,6 +19,7 @@ import org.hibernate.validator.constraints.NotBlank;
 public class Folder extends DomainEntity {
 
 	private String	name;
+	private Boolean systemFolders;
 
 
 	@NotBlank
@@ -28,6 +29,20 @@ public class Folder extends DomainEntity {
 
 	public void setName(final String name) {
 		this.name = name;
+	}
+
+	@NotNull
+	public Boolean isSystemFolders() {
+		return this.systemFolders;
+	}
+
+	@NotNull
+	public Boolean getSystemFolders() {
+		return this.systemFolders;
+	}
+
+	public void setSystemFolders(final Boolean valor) {
+		this.systemFolders = valor;
 	}
 
 

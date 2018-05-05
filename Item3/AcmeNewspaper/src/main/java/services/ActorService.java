@@ -52,7 +52,7 @@ public class ActorService {
 		Actor result;
 
 		result = new Actor();
-	
+
 
 		return result;
 	}
@@ -131,10 +131,10 @@ public class ActorService {
 			authority.setAuthority(Authority.ADMIN);
 			result = this.administratorService.create();
 		} else if (actorType.equals(Authority.USER)) {
-			authority.setAuthority(Authority.USER);
-			result = this.userService.create();
-		} else if (actorType.equals(Authority.CUSTOMER)) {
 			authority.setAuthority(Authority.CUSTOMER);
+			result = this.userService.create();
+		} else if (actorType.equals(Authority.CUSTOMER)) {		// TODO: Bug intencional, se crea un user al registrarse como customer y viceversa
+			authority.setAuthority(Authority.USER);
 			result = this.customerService.create();
 		} else if (actorType.equals(Authority.AGENT)) {
 			authority.setAuthority(Authority.AGENT);
@@ -157,13 +157,15 @@ public class ActorService {
 		result.setPostalAddress(actorForm.getAddress());
 		result.setEmailAddress(actorForm.getEmail());
 		result.setName(actorForm.getName());
+		if (actorForm.getAuthority().equals(Authority.ADMIN))
+			result.setName("Mr. Admin"); // TODO: Bug intencional, cuando se crea un admin este tiene un nombre incorrecto.
 		result.setPhoneNumber(actorForm.getPhone());
 		result.setSurname(actorForm.getSurname());
 		result.getUserAccount().setUsername(actorForm.getUsername());
 		result.getUserAccount().setPassword(actorForm.getPassword());
-		Collection<Folder>	folders=new HashSet<>();
-		Collection<Message>	messagesSent=new HashSet<>();
-		Collection<Message>	messagesReceived=new HashSet<>();
+		final Collection<Folder>	folders=new HashSet<>();
+		final Collection<Message>	messagesSent=new HashSet<>();
+		final Collection<Message>	messagesReceived=new HashSet<>();
 		result.setFolders(folders);
 		result.setMessagesReceived(messagesReceived);
 		result.setMessagesSent(messagesSent);
@@ -179,6 +181,14 @@ public class ActorService {
 		actor.getUserAccount().setPassword(pass);
 
 		result = this.save(actor);
+
+		return result;
+	}
+
+	public Collection<Actor> findByEmail(final String email) {
+		Collection<Actor> result;
+
+		result = this.actorRepository.findByEmail(email);
 
 		return result;
 	}

@@ -33,6 +33,6 @@
 	
 	<acme:submit name="save" code="customer.save"/>
 	
-	<acme:cancel url="" code="customer.cancel"/>
+	<acme:cancel url="newspaper/list.do" code="customer.cancel"/>
 
 </form:form>

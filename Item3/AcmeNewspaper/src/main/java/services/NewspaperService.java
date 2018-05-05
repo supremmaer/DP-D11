@@ -102,10 +102,9 @@ public class NewspaperService {
 	}
 	public Newspaper save(final Newspaper newspaper) {
 		Newspaper result;
-//TODO:Bug Intencional, al crear un newspaper no modifica el atributo taboo aunque tenga palabras taboo.
-		//descomentar esto para arreglar
-//		if (this.configService.isTaboo(newspaper.getTitle()) || this.configService.isTaboo(newspaper.getDescription()) || (newspaper.getPicture() != null && this.configService.isTaboo(newspaper.getPicture())))
-//			newspaper.setTaboo(true);
+
+		if (this.configService.isTaboo(newspaper.getTitle()) || this.configService.isTaboo(newspaper.getDescription()) || (newspaper.getPicture() != null && this.configService.isTaboo(newspaper.getPicture())))
+			newspaper.setTaboo(true);
 
 		if (newspaper.getId() != 0)
 			result = this.newspaperRepository.save(newspaper);

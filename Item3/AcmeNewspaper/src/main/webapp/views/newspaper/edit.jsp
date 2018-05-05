@@ -76,15 +76,11 @@
 	</form:select>  --%>
 	
 	
-	<%-- <security:authorize access="hasRole('ADMINISTRATOR')">
-	<acme:submit name="delete" code="comment.delete"/>
-	</security:authorize> --%>
-	<%//TODO:Bug Intencional: el cancel de create newspaper redirige a un lugar incorrecto %>  
+	
+	
 	<!-- El bueno -->
-	<%-- <acme:cancel url="" code="newspaper.cancel"/> --%>
-	<!-- El bug -->
-	<spring:message code="newspaper.cancel" var="cancel"/>
-	<input type="button" name="cancel" value="${cancel}" onclick="javascript:window.location.replace('https://imgur.com/MvXE2HO');" />
+	<acme:cancel url="" code="newspaper.cancel"/> 
+	
 		
 	
 	</form:form>

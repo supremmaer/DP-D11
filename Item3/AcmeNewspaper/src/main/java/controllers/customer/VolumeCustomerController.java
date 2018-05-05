@@ -76,8 +76,23 @@ public class VolumeCustomerController extends AbstractController {
 				this.creditCardService.subscribe(subscribeVolumeForm);
 				result = new ModelAndView("redirect:/volume/list.do");
 			} catch (final Throwable oops) {
-				result = this.createEditModelAndView(subscribeVolumeForm, "customer.commit.error");
+				String errorMessage = "creditCard.commit.error";
+				errorMessage = this.error(oops.toString());
+				if (oops.getMessage().contains("message.error"))
+					errorMessage = oops.getMessage();
+				result = this.createEditModelAndView(subscribeVolumeForm, errorMessage);
 			}
+
+		return result;
+	}
+
+	private String error(final String s) {
+		String result;
+
+		if (s.contains("creditCard.error.expired"))
+			result = "creditCard.error.expired";
+		else
+			result = "creditCard.commit.error";
 
 		return result;
 	}

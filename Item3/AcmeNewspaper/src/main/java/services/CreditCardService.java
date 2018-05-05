@@ -129,6 +129,12 @@ public class CreditCardService {
 
 	public CreditCard saveAddNewspaper(final CreditCard creditCard) {
 		CreditCard result;
+		final DateTime dt = new DateTime();
+		final int mes = creditCard.getExpirationMonth();
+		final int anio = creditCard.getExpirationYear();
+		Assert.isTrue(dt.getYear() <= anio, "creditCard.error.expired");
+		if (dt.getYear() == anio)
+			Assert.isTrue(dt.getMonthOfYear() < mes, "creditCard.error.expired");
 
 		result = this.creditCardRepository.save(creditCard);
 
@@ -178,9 +184,13 @@ public class CreditCardService {
 	}
 
 	public void subscribe(final SubscribeForm subscribeForm) {
-
+		Customer customer;
+		customer = (Customer) this.actorService.findByPrincipal();
+		final Collection<CreditCard> auxc = customer.getCreditCard();
 		final Newspaper newspaper = subscribeForm.getNewspaper();
 		final CreditCard creditCard = subscribeForm.getCreditCard();
+
+		Assert.isTrue(auxc.contains(creditCard));
 
 		final Collection<Newspaper> aux = creditCard.getNewspapers();
 		aux.add(newspaper);

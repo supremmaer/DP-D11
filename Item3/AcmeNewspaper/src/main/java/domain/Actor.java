@@ -7,6 +7,7 @@ import javax.persistence.Access;
 import javax.persistence.AccessType;
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
+import javax.persistence.ManyToMany;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.validation.Valid;
@@ -109,7 +110,7 @@ public class Actor extends DomainEntity {
 		return this.messagesSent;
 	}
 
-	@OneToMany(mappedBy = "recipient")
+	@ManyToMany(mappedBy = "recipients")
 	@NotNull
 	public Collection<Message> getMessagesReceived() {
 		return this.messagesReceived;

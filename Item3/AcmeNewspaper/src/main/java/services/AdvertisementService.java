@@ -62,6 +62,12 @@ public class AdvertisementService {
 	}
 
 	public Advertisement save(final Advertisement advertisement) {
+		final Newspaper newspaper = advertisement.getNewspaper();
+		final CreditCard creditCard = advertisement.getCreditCard();
+		Agent agent;
+		agent = (Agent) this.actorService.findByPrincipal();
+		Assert.isTrue(agent.getId() == creditCard.getAgent().getId());
+
 		final DateTime dt = new DateTime();
 		final int mes = advertisement.getCreditCard().getExpirationMonth();
 		final int anio = advertisement.getCreditCard().getExpirationYear();
@@ -69,13 +75,9 @@ public class AdvertisementService {
 		if (dt.getYear() == anio)
 			Assert.isTrue(dt.getMonthOfYear() < mes, "creditCard.error.expired");
 		Advertisement result;
-		Agent agent;
-		agent = (Agent) this.actorService.findByPrincipal();
+
 		advertisement.setAgent(agent);
 		result = this.advertisementRepository.save(advertisement);
-
-		final Newspaper newspaper = advertisement.getNewspaper();
-		final CreditCard creditCard = advertisement.getCreditCard();
 
 		final Collection<Newspaper> aux = creditCard.getNewspapers();
 		aux.add(newspaper);

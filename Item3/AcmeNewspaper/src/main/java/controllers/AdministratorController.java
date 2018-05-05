@@ -28,6 +28,7 @@ import services.NewspaperService;
 import services.UserService;
 import services.VolumeService;
 import domain.Newspaper;
+import forms.MessageForm;
 
 @Controller
 @RequestMapping("/administrator")
@@ -69,7 +70,7 @@ public class AdministratorController extends AbstractController {
 		super();
 	}
 
-	// Action-1 ---------------------------------------------------------------		
+	// Action-1 ---------------------------------------------------------------
 
 	@RequestMapping("/action-1")
 	public ModelAndView action1() {
@@ -232,6 +233,39 @@ public class AdministratorController extends AbstractController {
 		result.addObject("ratioVolumensVsNewspaperSubs", ratioVolumensVsNewspaperSubs);
 
 		result.addObject("requestURI", "administrator/dashboard.do");
+
+		return result;
+	}
+
+	@RequestMapping("/notification")
+	public ModelAndView notification() {
+		ModelAndView result;
+		MessageForm messageForm;
+
+		messageForm = new MessageForm();
+		messageForm.setDestination("NOTIFICATION");
+		result = this.createEditModelAndView(messageForm);
+
+		return result;
+	}
+
+	protected ModelAndView createEditModelAndView(final MessageForm messageForm) {
+		ModelAndView result;
+
+		result = this.createEditModelAndView(messageForm, null);
+
+		return result;
+	}
+
+	protected ModelAndView createEditModelAndView(final MessageForm messageForm, final String message) {
+		ModelAndView result;
+
+		final String requestURI = "actor/message/send.do";
+
+		result = new ModelAndView("message/edit");
+		result.addObject("messageForm", messageForm);
+		result.addObject("message", message);
+		result.addObject("requestURI", requestURI);
 
 		return result;
 	}
