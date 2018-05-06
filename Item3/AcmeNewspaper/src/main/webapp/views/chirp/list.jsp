@@ -25,7 +25,7 @@
 
 
 <!-- Listing grid -->
-
+<spring:message code="master.page.date.format" var="dateFormat" />
 <display:table pagesize="5" class="displaytag" name="chirps"  requestURI="${requestURI}" id="row">
 
 	<spring:message code="chirp.title" var="titleHeader" />
@@ -35,7 +35,7 @@
 	<display:column title="${descriptionHeader}"><jstl:out value="${row.description}"></jstl:out></display:column>
 	
 	<spring:message code="chirp.moment" var="momentHeader" />
-	<display:column title="${momentHeader}"><jstl:out value="${row.moment}"></jstl:out></display:column>
+	<display:column title="${momentHeader}" property="moment" format="{0,date,${datePattern}}"/>
 	
 	<security:authorize access="hasRole('ADMIN')">
 	<display:column>
