@@ -186,7 +186,11 @@ public class NewspaperController extends AbstractController {
 	@RequestMapping(value = "/edit", method = RequestMethod.POST, params = "save")
 	public ModelAndView save(@Valid final Newspaper newspaper, final BindingResult binding) {
 		ModelAndView result;
-
+		System.out.println(newspaper.getPublicity());
+		if(binding.getFieldError("publicity")!=null){
+			result = createEditModelAndView(newspaper,"newspaper.publicityFail");
+			return result;
+		}
 		if (binding.hasErrors())
 			result = this.createEditModelAndView(newspaper);
 		else
@@ -198,6 +202,7 @@ public class NewspaperController extends AbstractController {
 
 				if (oops.getMessage().contains("message.error"))
 					errorMessage = oops.getMessage();
+				
 				result = this.createEditModelAndView(newspaper, errorMessage);
 			}
 
