@@ -109,7 +109,7 @@ public class ActorFolderController extends AbstractController {
 		temp = this.folderService.findFoldersByPrincipal();
 		folders = new HashSet<Folder>(temp);
 		folders.remove(folder.getParent());
-		// folders.remove(folder); TODO: Bug intencional, meter una carpeta dentro de sí misma
+		folders.remove(folder);
 
 		result = new ModelAndView("folder/edit");
 		result.addObject("folder", folder);

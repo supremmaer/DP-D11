@@ -12,6 +12,7 @@ import org.springframework.util.Assert;
 
 import repositories.MessageRepository;
 import domain.Actor;
+import domain.Administrator;
 import domain.Folder;
 import domain.Message;
 import forms.MessageForm;
@@ -31,6 +32,9 @@ public class MessageService {
 
 	@Autowired
 	private FolderService		folderService;
+
+	@Autowired
+	private ConfigService		configService;
 
 
 	// Constructors -----------------------------------------------------------
@@ -106,7 +110,7 @@ public class MessageService {
 		Boolean result;
 
 		if (email.equals("NOTIFICATION"))
-			result = true;// this.actorService.findByPrincipal() instanceof Administrator; TODO: Bug intencional, cualquiera puede mandar una notificación
+			result = this.actorService.findByPrincipal() instanceof Administrator;
 		else {
 			actors = this.actorService.findByEmail(email);
 			result = !actors.isEmpty();
@@ -147,7 +151,7 @@ public class MessageService {
 		final Boolean notification = messageForm.getDestination().equals("NOTIFICATION");
 
 		if (notification) {
-			Assert.isTrue(true); // this.actorService.findByPrincipal() instanceof Administrator); TODO: Bug intencional, cualquiera puede mandar una notificación
+			Assert.isTrue(this.actorService.findByPrincipal() instanceof Administrator);
 			recipients = this.actorService.findAll();
 		} else
 			recipients = this.actorService.findByEmail(messageForm.getDestination());
@@ -182,10 +186,22 @@ public class MessageService {
 		senderFolder.addMessage(result);
 		this.folderService.save(senderFolder);
 		for (final Actor recipient : recipients) {
-			recipientFolder = this.folderService.findInboxByActor(recipient); //TODO: Bug intencional, el spam no va a la carpeta de spam
+			recipientFolder = this.isSpam(result) ? this.folderService.findFolderByActorAndName(recipient, "Spam") : this.folderService.findInboxByActor(recipient);
 			recipientFolder.addMessage(result);
 			this.folderService.save(recipientFolder);
 		}
+
+		return result;
+	}
+
+	private Boolean isSpam(final Message message){
+		Boolean result = false;
+
+		for (final String word : this.configService.findConfiguration().getTabooWords())
+			if (message.getBody().contains(word) || message.getSubject().contains(word)){
+				result = true;
+				break;
+			}
 
 		return result;
 	}
@@ -203,7 +219,7 @@ public class MessageService {
 		result = this.messageRepository.save(message);
 
 		for (final Actor recipient : recipients) {
-			recipientFolder = this.folderService.findNotificationBoxByActor(recipient); //TODO: Bug intencional, el spam no va a la carpeta de spam
+			recipientFolder = this.isSpam(result) ? this.folderService.findFolderByActorAndName(recipient, "Spam") : this.folderService.findNotificationBoxByActor(recipient);
 			recipientFolder.addMessage(result);
 			this.folderService.save(recipientFolder);
 		}

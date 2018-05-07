@@ -131,10 +131,10 @@ public class ActorService {
 			authority.setAuthority(Authority.ADMIN);
 			result = this.administratorService.create();
 		} else if (actorType.equals(Authority.USER)) {
-			authority.setAuthority(Authority.CUSTOMER);
-			result = this.userService.create();
-		} else if (actorType.equals(Authority.CUSTOMER)) {		// TODO: Bug intencional, se crea un user al registrarse como customer y viceversa
 			authority.setAuthority(Authority.USER);
+			result = this.userService.create();
+		} else if (actorType.equals(Authority.CUSTOMER)) {
+			authority.setAuthority(Authority.CUSTOMER);
 			result = this.customerService.create();
 		} else if (actorType.equals(Authority.AGENT)) {
 			authority.setAuthority(Authority.AGENT);
@@ -157,8 +157,6 @@ public class ActorService {
 		result.setPostalAddress(actorForm.getAddress());
 		result.setEmailAddress(actorForm.getEmail());
 		result.setName(actorForm.getName());
-		if (actorForm.getAuthority().equals(Authority.ADMIN))
-			result.setName("Mr. Admin"); // TODO: Bug intencional, cuando se crea un admin este tiene un nombre incorrecto.
 		result.setPhoneNumber(actorForm.getPhone());
 		result.setSurname(actorForm.getSurname());
 		result.getUserAccount().setUsername(actorForm.getUsername());
