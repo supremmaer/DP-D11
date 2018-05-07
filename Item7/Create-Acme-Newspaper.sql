@@ -11,6 +11,7 @@ grant select, insert, update, delete, create, drop, references, index, alter,
         alter routine, execute, trigger, show view
     on `acmenewspaper`.* to 'acme-manager'@'%';
 
+
 -- MySQL dump 10.13  Distrib 5.5.29, for Win64 (x86)
 --
 -- Host: localhost    Database: AcmeNewspaper
@@ -80,7 +81,7 @@ CREATE TABLE `actor_folder` (
 
 LOCK TABLES `actor_folder` WRITE;
 /*!40000 ALTER TABLE `actor_folder` DISABLE KEYS */;
-INSERT INTO `actor_folder` VALUES (259,317),(259,318),(259,319),(259,320),(259,321),(259,322),(260,323),(260,324),(260,325),(260,326),(260,327),(260,328),(261,329),(261,330),(261,331),(261,332),(261,333),(261,334),(262,335),(262,336),(262,337),(262,338),(262,339),(262,340),(297,341),(297,342),(297,343),(297,344),(297,345),(297,346),(263,347),(263,348),(263,349),(263,350),(263,351),(263,352),(264,353),(264,354),(264,355),(264,356),(264,357),(264,358);
+INSERT INTO `actor_folder` VALUES (11,13),(11,14),(11,15),(11,16),(11,17),(11,18);
 /*!40000 ALTER TABLE `actor_folder` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -112,7 +113,7 @@ CREATE TABLE `administrator` (
 
 LOCK TABLES `administrator` WRITE;
 /*!40000 ALTER TABLE `administrator` DISABLE KEYS */;
-INSERT INTO `administrator` VALUES (259,0,'ponsavi@acme.org','Paco','656343000','Calle Fontenla, 2','Samper Villagrán',252);
+INSERT INTO `administrator` VALUES (11,0,'ponsavi@acme.org','Paco','656343000','Calle Fontenla, 2','Samper Villagrán',10);
 /*!40000 ALTER TABLE `administrator` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -150,7 +151,6 @@ CREATE TABLE `advertisement` (
 
 LOCK TABLES `advertisement` WRITE;
 /*!40000 ALTER TABLE `advertisement` DISABLE KEYS */;
-INSERT INTO `advertisement` VALUES (362,0,'http://www.us.es/hereyouhaveanattachment','\0','http://www.us.es/hereyouhaveanattachment','Pepón',263,293,308),(363,0,'http://www.us.es/hereyouhaveanattachment','\0','http://www.us.es/hereyouhaveanattachment','Pepón',263,293,310),(364,0,'http://www.us.es/hereyouhaveanattachment','','http://www.us.es/hereyouhaveanattachment','Sex',264,294,308);
 /*!40000 ALTER TABLE `advertisement` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -182,7 +182,6 @@ CREATE TABLE `agent` (
 
 LOCK TABLES `agent` WRITE;
 /*!40000 ALTER TABLE `agent` DISABLE KEYS */;
-INSERT INTO `agent` VALUES (263,0,'ponsavi@acme.org','Agent1','656343000','Calle Fontenla, 2','Samper Villagrán',257),(264,0,'ponsavi@acme.org','Agent2','656343000','Calle Fontenla, 2','Samper Villagrán',258);
 /*!40000 ALTER TABLE `agent` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -214,7 +213,6 @@ CREATE TABLE `article` (
 
 LOCK TABLES `article` WRITE;
 /*!40000 ALTER TABLE `article` DISABLE KEYS */;
-INSERT INTO `article` VALUES (265,0,'\0','2014-01-02','Sumary','\0','texto : Lorem ipsum dolormodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.','articulo1'),(266,0,'\0','2014-01-02','Sumary','\0','texto : Lorem ipsum dolormodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.','articulo2'),(267,0,'\0','2014-01-02','Sumary','\0','texto : Lorem ipsum dolormodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.','articulo3'),(268,0,'\0','2014-01-02','Sumary','\0','texto : Lorem ipsum dolormodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.','articulo4'),(269,0,'\0','2014-01-02','Sumary','\0','texto : Lorem ipsum dolormodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.','articulo5'),(270,0,'\0','2014-01-02','Sumary','\0','texto : Lorem ipsum dolormodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.','articulo6'),(271,0,'\0','2014-01-02','Sumary','\0','texto : Lorem ipsum dolormodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.','articulo7'),(272,0,'\0','2014-01-02','Sumary','\0','texto : Lorem ipsum dolormodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.','articulo8'),(273,0,'\0','2014-01-02','Sumary','\0','texto : Lorem ipsum dolormodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.','articulo9'),(274,0,'\0','2014-01-02','Sumary','\0','texto : Lorem ipsum dolormodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.','articulo10'),(275,0,'\0','2014-01-02','Sumary','\0','texto : Lorem ipsum dolormodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.','articulo11'),(276,0,'\0','2014-01-02','Sumary','\0','texto : Lorem ipsum dolormodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.','articulo12'),(277,0,'\0','2014-01-02','Sumary','\0','texto : Lorem ipsum dolormodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.','articulo13'),(278,0,'\0','2014-01-02','Sumary','\0','texto : Lorem ipsum dolormodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.','articulo14'),(279,0,'\0','2014-01-02','Sex','','texto : Lorem ipsum dolormodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.','articulo15'),(280,0,'',NULL,'Sumary','\0','texto : Lorem ipsum dolormodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.','articulo16'),(281,0,'\0',NULL,'Sumary','\0','texto : Lorem ipsum dolormodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.','articulo17'),(282,0,'\0',NULL,'Sumary','\0','texto : Lorem ipsum dolormodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.','articulo18'),(283,0,'\0',NULL,'Sumary','\0','texto : Lorem ipsum dolormodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.','articulo19'),(284,0,'\0',NULL,'Sumary','\0','texto : Lorem ipsum dolormodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.','articulo20');
 /*!40000 ALTER TABLE `article` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -239,7 +237,6 @@ CREATE TABLE `article_pictures` (
 
 LOCK TABLES `article_pictures` WRITE;
 /*!40000 ALTER TABLE `article_pictures` DISABLE KEYS */;
-INSERT INTO `article_pictures` VALUES (265,'http://imagen.png'),(266,'http://imagen.png'),(267,'http://imagen.png'),(268,'http://imagen.png'),(269,'http://imagen.png'),(270,'http://imagen.png'),(271,'http://imagen.png'),(272,'http://imagen.png'),(273,'http://imagen.png'),(274,'http://imagen.png'),(275,'http://imagen.png'),(276,'http://imagen.png'),(277,'http://imagen.png'),(278,'http://imagen.png'),(279,'http://imagen.png'),(280,'http://imagen.png'),(281,'http://imagen.png'),(282,'http://imagen.png'),(283,'http://imagen.png'),(284,'http://imagen.png');
 /*!40000 ALTER TABLE `article_pictures` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -268,7 +265,6 @@ CREATE TABLE `chirp` (
 
 LOCK TABLES `chirp` WRITE;
 /*!40000 ALTER TABLE `chirp` DISABLE KEYS */;
-INSERT INTO `chirp` VALUES (285,0,'','viagra descripcion 1: Loreugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.','2014-01-02','chirp1'),(286,0,'\0','descripcion 1: Loreugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.','2014-01-02','chirp2'),(287,0,'\0','descripcion 1: Loreugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.','2014-01-02','chirp3'),(288,0,'\0','descripcion 1: Loreugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.','2014-01-02','chirp4'),(289,0,'\0','descripcion 1: Loreugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.','2014-01-02','chirp5');
 /*!40000 ALTER TABLE `chirp` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -292,7 +288,7 @@ CREATE TABLE `config` (
 
 LOCK TABLES `config` WRITE;
 /*!40000 ALTER TABLE `config` DISABLE KEYS */;
-INSERT INTO `config` VALUES (290,0);
+INSERT INTO `config` VALUES (12,0);
 /*!40000 ALTER TABLE `config` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -317,7 +313,7 @@ CREATE TABLE `config_taboowords` (
 
 LOCK TABLES `config_taboowords` WRITE;
 /*!40000 ALTER TABLE `config_taboowords` DISABLE KEYS */;
-INSERT INTO `config_taboowords` VALUES (290,'sex'),(290,'sexo'),(290,'viagra'),(290,'cialis');
+INSERT INTO `config_taboowords` VALUES (12,'sex'),(12,'sexo'),(12,'viagra'),(12,'cialis');
 /*!40000 ALTER TABLE `config_taboowords` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -350,7 +346,6 @@ CREATE TABLE `creditcard` (
 
 LOCK TABLES `creditcard` WRITE;
 /*!40000 ALTER TABLE `creditcard` DISABLE KEYS */;
-INSERT INTO `creditcard` VALUES (291,0,124,'Visa',10,2020,'Francisco Perez','4532013067246621',NULL),(292,0,124,'Visa',10,2020,'Señor que esta cansado de rellenar el populate','4532013067246621',NULL),(293,0,124,'Visa',10,2020,'Francisco Perez','4532013067246621',263),(294,0,124,'Visa',10,2020,'Juan Perez','5480848314079443',264);
 /*!40000 ALTER TABLE `creditcard` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -377,7 +372,6 @@ CREATE TABLE `creditcard_newspaper` (
 
 LOCK TABLES `creditcard_newspaper` WRITE;
 /*!40000 ALTER TABLE `creditcard_newspaper` DISABLE KEYS */;
-INSERT INTO `creditcard_newspaper` VALUES (291,310),(293,310),(293,308),(294,308);
 /*!40000 ALTER TABLE `creditcard_newspaper` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -404,7 +398,6 @@ CREATE TABLE `creditcard_volume` (
 
 LOCK TABLES `creditcard_volume` WRITE;
 /*!40000 ALTER TABLE `creditcard_volume` DISABLE KEYS */;
-INSERT INTO `creditcard_volume` VALUES (292,295);
 /*!40000 ALTER TABLE `creditcard_volume` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -436,7 +429,6 @@ CREATE TABLE `customer` (
 
 LOCK TABLES `customer` WRITE;
 /*!40000 ALTER TABLE `customer` DISABLE KEYS */;
-INSERT INTO `customer` VALUES (297,0,'ponsavi@acme.org','Pepón','656222111','Calle Fontenla, 2','Samper Villagrán',254);
 /*!40000 ALTER TABLE `customer` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -463,7 +455,6 @@ CREATE TABLE `customer_creditcard` (
 
 LOCK TABLES `customer_creditcard` WRITE;
 /*!40000 ALTER TABLE `customer_creditcard` DISABLE KEYS */;
-INSERT INTO `customer_creditcard` VALUES (297,291),(297,292);
 /*!40000 ALTER TABLE `customer_creditcard` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -492,7 +483,7 @@ CREATE TABLE `folder` (
 
 LOCK TABLES `folder` WRITE;
 /*!40000 ALTER TABLE `folder` DISABLE KEYS */;
-INSERT INTO `folder` VALUES (317,0,'Root','',NULL),(318,0,'Inbox','',317),(319,0,'Outbox','',317),(320,0,'Notification Box','',317),(321,0,'TrashBox','',317),(322,0,'Spam','',317),(323,0,'Root','',NULL),(324,0,'Inbox','',323),(325,0,'Outbox','',323),(326,0,'Notification Box','',323),(327,0,'TrashBox','',323),(328,0,'Spam','',323),(329,0,'Root','',NULL),(330,0,'Inbox','',329),(331,0,'Outbox','',329),(332,0,'Notification Box','',329),(333,0,'TrashBox','',329),(334,0,'Spam','',329),(335,0,'Root','',NULL),(336,0,'Inbox','',335),(337,0,'Outbox','',335),(338,0,'Notification Box','',335),(339,0,'TrashBox','',335),(340,0,'Spam','',335),(341,0,'Root','',NULL),(342,0,'Inbox','',341),(343,0,'Outbox','',341),(344,0,'Notification Box','',341),(345,0,'TrashBox','',341),(346,0,'Spam','',341),(347,0,'Root','',NULL),(348,0,'Inbox','',347),(349,0,'Outbox','',347),(350,0,'Notification Box','',347),(351,0,'TrashBox','',347),(352,0,'Spam','',347),(353,0,'Root','',NULL),(354,0,'Inbox','',353),(355,0,'Outbox','',353),(356,0,'Notification Box','',353),(357,0,'TrashBox','',353),(358,0,'Spam','',353);
+INSERT INTO `folder` VALUES (13,0,'Root','',NULL),(14,0,'Inbox','',13),(15,0,'Outbox','',13),(16,0,'Notification Box','',13),(17,0,'TrashBox','',13),(18,0,'Spam','',13);
 /*!40000 ALTER TABLE `folder` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -519,7 +510,6 @@ CREATE TABLE `folder_message` (
 
 LOCK TABLES `folder_message` WRITE;
 /*!40000 ALTER TABLE `folder_message` DISABLE KEYS */;
-INSERT INTO `folder_message` VALUES (324,360),(325,359),(325,361),(330,359),(331,360),(348,361);
 /*!40000 ALTER TABLE `folder_message` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -551,7 +541,6 @@ CREATE TABLE `followup` (
 
 LOCK TABLES `followup` WRITE;
 /*!40000 ALTER TABLE `followup` DISABLE KEYS */;
-INSERT INTO `followup` VALUES (298,0,'2014-01-02','sumario','texto1','titulodelfollowup1',265),(299,0,'2014-01-02','sumario','texto1','titulodelfollowup2',266),(300,0,'2014-01-02','sumario','texto1','titulodelfollowup3',267),(301,0,'2014-01-02','sumario','texto1','titulodelfollowup4',268),(302,0,'2014-01-02','sumario','texto1','titulodelfollowup5',269),(303,0,'2014-01-02','sumario','texto1','titulodelfollowup6',270),(304,0,'2014-01-02','sumario','texto1','titulodelfollowup6',275),(305,0,'2014-01-02','sumario','texto1','titulodelfollowup6',276),(306,0,'2014-01-02','sumario','texto1','titulodelfollowup6',277),(307,0,'2014-01-02','sumario','texto1','titulodelfollowup6',278);
 /*!40000 ALTER TABLE `followup` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -576,7 +565,6 @@ CREATE TABLE `followup_pictures` (
 
 LOCK TABLES `followup_pictures` WRITE;
 /*!40000 ALTER TABLE `followup_pictures` DISABLE KEYS */;
-INSERT INTO `followup_pictures` VALUES (298,'http://imagen.png'),(299,'http://imagen.png'),(300,'http://imagen.png'),(301,'http://imagen.png'),(302,'http://imagen.png'),(303,'http://imagen.png'),(304,'http://imagen.png'),(305,'http://imagen.png'),(306,'http://imagen.png'),(307,'http://imagen.png');
 /*!40000 ALTER TABLE `followup_pictures` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -628,7 +616,6 @@ CREATE TABLE `message` (
 
 LOCK TABLES `message` WRITE;
 /*!40000 ALTER TABLE `message` DISABLE KEYS */;
-INSERT INTO `message` VALUES (359,0,'cuerpo del mensaje 1.','2017-10-01 19:00:00','NEUTRAL','Asunto1',260),(360,0,'cuerpo del mensaje 2.','2017-10-01 19:00:00','NEUTRAL','Asunto1',261),(361,0,'cuerpo del mensaje 3.','2017-10-01 19:00:00','NEUTRAL','Asunto1',260);
 /*!40000 ALTER TABLE `message` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -653,7 +640,6 @@ CREATE TABLE `message_actor` (
 
 LOCK TABLES `message_actor` WRITE;
 /*!40000 ALTER TABLE `message_actor` DISABLE KEYS */;
-INSERT INTO `message_actor` VALUES (359,261),(360,260),(361,263);
 /*!40000 ALTER TABLE `message_actor` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -686,7 +672,6 @@ CREATE TABLE `newspaper` (
 
 LOCK TABLES `newspaper` WRITE;
 /*!40000 ALTER TABLE `newspaper` DISABLE KEYS */;
-INSERT INTO `newspaper` VALUES (308,0,'descripcion del periodico','https://vignette.wikia.nocookie.net/medabots/images/7/73/Imagen_de_ejemplo.png','2014-01-02','\0','\0','titulo del periodico'),(309,0,'descripcion del periodico','https://vignette.wikia.nocookie.net/medabots/images/7/73/Imagen_de_ejemplo.png','2014-01-02','\0','\0','titulo del periodico 2'),(310,0,'descripcion del periodico','https://vignette.wikia.nocookie.net/medabots/images/7/73/Imagen_de_ejemplo.png','2014-01-02','','\0','Periodico privado'),(311,0,'descripcion del periodico','https://vignette.wikia.nocookie.net/medabots/images/7/73/Imagen_de_ejemplo.png','2014-01-02','\0','\0','Periodico en draft publico'),(312,0,'descripcion del periodico','https://vignette.wikia.nocookie.net/medabots/images/7/73/Imagen_de_ejemplo.png',NULL,'','\0','Periodico en draft privado'),(313,0,'sexo free sex sida dildo dialis aprobado dp','https://vignette.wikia.nocookie.net/medabots/images/7/73/Imagen_de_ejemplo.png',NULL,'\0','','periodico prohibido taboo +18'),(314,0,'descripcion del periodico','https://vignette.wikia.nocookie.net/medabots/images/7/73/Imagen_de_ejemplo.png',NULL,'\0','\0','Periodico en draft publico'),(315,0,'descripcion del periodico','https://vignette.wikia.nocookie.net/medabots/images/7/73/Imagen_de_ejemplo.png','2014-01-02','','\0','Periodico privado2'),(316,0,'descripcion del periodico','https://vignette.wikia.nocookie.net/medabots/images/7/73/Imagen_de_ejemplo.png',NULL,'\0','\0','Periodico por publicar');
 /*!40000 ALTER TABLE `newspaper` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -713,7 +698,6 @@ CREATE TABLE `newspaper_article` (
 
 LOCK TABLES `newspaper_article` WRITE;
 /*!40000 ALTER TABLE `newspaper_article` DISABLE KEYS */;
-INSERT INTO `newspaper_article` VALUES (308,265),(308,266),(308,267),(308,268),(308,269),(308,283),(309,270),(309,271),(309,272),(309,273),(309,274),(310,275),(310,276),(310,277),(310,278),(310,279),(314,280),(314,281),(315,282),(316,284);
 /*!40000 ALTER TABLE `newspaper_article` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -745,7 +729,6 @@ CREATE TABLE `user` (
 
 LOCK TABLES `user` WRITE;
 /*!40000 ALTER TABLE `user` DISABLE KEYS */;
-INSERT INTO `user` VALUES (260,0,'ponsavi@acme.org','Pepón','656343002','Calle Fontenla, 2','Samper Villagrán',253),(261,0,'user2@mail.com','userName2','656222111','user2PostalAdress','userSurname2',255),(262,0,'user3@mail.com','userName3','656222113','user3PostalAdress','userSurname3',256);
 /*!40000 ALTER TABLE `user` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -772,7 +755,6 @@ CREATE TABLE `user_article` (
 
 LOCK TABLES `user_article` WRITE;
 /*!40000 ALTER TABLE `user_article` DISABLE KEYS */;
-INSERT INTO `user_article` VALUES (260,265),(260,266),(260,267),(260,268),(260,269),(260,280),(260,281),(260,282),(260,283),(260,284),(261,270),(261,271),(261,272),(261,273),(261,274),(262,275),(262,276),(262,277),(262,278),(262,279);
 /*!40000 ALTER TABLE `user_article` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -799,7 +781,6 @@ CREATE TABLE `user_chirp` (
 
 LOCK TABLES `user_chirp` WRITE;
 /*!40000 ALTER TABLE `user_chirp` DISABLE KEYS */;
-INSERT INTO `user_chirp` VALUES (260,285),(260,286),(260,287),(261,288),(261,289);
 /*!40000 ALTER TABLE `user_chirp` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -826,7 +807,6 @@ CREATE TABLE `user_followup` (
 
 LOCK TABLES `user_followup` WRITE;
 /*!40000 ALTER TABLE `user_followup` DISABLE KEYS */;
-INSERT INTO `user_followup` VALUES (260,298),(260,299),(260,300),(260,301),(260,302),(261,303),(262,304),(262,305),(262,306),(262,307);
 /*!40000 ALTER TABLE `user_followup` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -853,7 +833,6 @@ CREATE TABLE `user_newspaper` (
 
 LOCK TABLES `user_newspaper` WRITE;
 /*!40000 ALTER TABLE `user_newspaper` DISABLE KEYS */;
-INSERT INTO `user_newspaper` VALUES (260,308),(260,311),(260,312),(260,313),(260,314),(260,316),(261,309),(262,310);
 /*!40000 ALTER TABLE `user_newspaper` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -880,7 +859,6 @@ CREATE TABLE `user_user` (
 
 LOCK TABLES `user_user` WRITE;
 /*!40000 ALTER TABLE `user_user` DISABLE KEYS */;
-INSERT INTO `user_user` VALUES (261,260),(262,260),(262,261);
 /*!40000 ALTER TABLE `user_user` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -907,7 +885,7 @@ CREATE TABLE `useraccount` (
 
 LOCK TABLES `useraccount` WRITE;
 /*!40000 ALTER TABLE `useraccount` DISABLE KEYS */;
-INSERT INTO `useraccount` VALUES (252,0,'21232f297a57a5a743894a0e4a801fc3','admin'),(253,0,'24c9e15e52afc47c225b757e7bee1f9d','user1'),(254,0,'ffbc4675f864e0e9aab8bdf7a0437010','customer1'),(255,0,'7e58d63b60197ceb55a1c487989a3720','user2'),(256,0,'92877af70a45fd6a2ed7fe81e1236b78','user3'),(257,0,'83a87fd756ab57199c0bb6d5e11168cb','agent1'),(258,0,'b1a4a6b01cc297d4677c4ca6656e14d7','agent2');
+INSERT INTO `useraccount` VALUES (10,0,'21232f297a57a5a743894a0e4a801fc3','admin');
 /*!40000 ALTER TABLE `useraccount` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -932,7 +910,7 @@ CREATE TABLE `useraccount_authorities` (
 
 LOCK TABLES `useraccount_authorities` WRITE;
 /*!40000 ALTER TABLE `useraccount_authorities` DISABLE KEYS */;
-INSERT INTO `useraccount_authorities` VALUES (252,'ADMIN'),(253,'USER'),(254,'CUSTOMER'),(255,'USER'),(256,'USER'),(257,'AGENT'),(258,'AGENT');
+INSERT INTO `useraccount_authorities` VALUES (10,'ADMIN');
 /*!40000 ALTER TABLE `useraccount_authorities` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -962,7 +940,6 @@ CREATE TABLE `volume` (
 
 LOCK TABLES `volume` WRITE;
 /*!40000 ALTER TABLE `volume` DISABLE KEYS */;
-INSERT INTO `volume` VALUES (295,0,'Muchas cosas bonitas','Flores',2018,260),(296,0,'Sex, sex and more sex ban','Porn',2017,260);
 /*!40000 ALTER TABLE `volume` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -989,7 +966,6 @@ CREATE TABLE `volume_newspaper` (
 
 LOCK TABLES `volume_newspaper` WRITE;
 /*!40000 ALTER TABLE `volume_newspaper` DISABLE KEYS */;
-INSERT INTO `volume_newspaper` VALUES (295,308),(295,309),(295,310),(296,308),(296,311);
 /*!40000 ALTER TABLE `volume_newspaper` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -1002,4 +978,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2018-05-07 19:09:36
+-- Dump completed on 2018-05-07 22:29:06
