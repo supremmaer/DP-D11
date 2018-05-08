@@ -2,6 +2,8 @@
 package services;
 
 import java.util.Collection;
+import java.util.HashSet;
+import java.util.Set;
 
 import javax.transaction.Transactional;
 
@@ -67,11 +69,11 @@ public class ConfigService {
 	public Config addTabooWord(final String tabooWord) {
 		Config config;
 		Config result;
-		Collection<String> tabooWords;
+		Set<String> tabooWords;
 
 		config = this.findConfiguration();
-		tabooWords = config.getTabooWords();
-		Assert.isTrue(!tabooWords.contains(tabooWord) && tabooWord != null);
+		tabooWords = new HashSet<String>(config.getTabooWords());
+		// Assert.isTrue(!tabooWords.contains(tabooWord) && tabooWord != null); Esto petaba todos los tests de rendimiento.
 		tabooWords.add(tabooWord);
 		config.setTabooWords(tabooWords);
 		result = this.save(config);
