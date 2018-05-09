@@ -276,4 +276,8 @@ public class FolderService {
 		Assert.isTrue(actor.getFolders().contains(folder));
 	}
 
+	public void flush() {
+		this.folderRepository.flush();
+	}
+
 }
