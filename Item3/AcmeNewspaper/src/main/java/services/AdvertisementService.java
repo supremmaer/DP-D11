@@ -66,6 +66,7 @@ public class AdvertisementService {
 		final CreditCard creditCard = advertisement.getCreditCard();
 		Agent agent;
 		agent = (Agent) this.actorService.findByPrincipal();
+		Assert.isTrue(creditCard != null, "creditCard.error.null");
 		Assert.isTrue(agent.getId() == creditCard.getAgent().getId());
 
 		final DateTime dt = new DateTime();

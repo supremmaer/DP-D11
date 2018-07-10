@@ -94,8 +94,9 @@ public class ConfigAdministratorController extends AbstractController {
 			try {
 				config = this.configService.findConfiguration();
 				tabooWords = config.getTabooWords();
-				tabooWords.add(tabooWordForm.getTabooWord());
-				config.setTabooWords(tabooWords);
+				//tabooWords.add(tabooWordForm.getTabooWord());
+				this.configService.addTabooWord(tabooWordForm.getTabooWord());
+
 				this.configService.save(config);
 				result = new ModelAndView("redirect:/administrator/config/display.do");
 			} catch (final Throwable oops) {

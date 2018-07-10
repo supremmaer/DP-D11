@@ -1,6 +1,7 @@
 
 package controllers.actor;
 
+import java.util.ArrayList;
 import java.util.Collection;
 import java.util.HashSet;
 
@@ -110,6 +111,7 @@ public class ActorFolderController extends AbstractController {
 		folders = new HashSet<Folder>(temp);
 		folders.remove(folder.getParent());
 		folders.remove(folder);
+		folders.remove(folder.getFolders() != null ? folder.getFolders() : new ArrayList<Folder>());
 
 		result = new ModelAndView("folder/edit");
 		result.addObject("folder", folder);

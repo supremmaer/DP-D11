@@ -14,6 +14,7 @@ import org.springframework.util.Assert;
 import repositories.ConfigRepository;
 import domain.Actor;
 import domain.Administrator;
+import domain.Advertisement;
 import domain.Config;
 
 @Service
@@ -22,10 +23,13 @@ public class ConfigService {
 
 	//Managed Repository ----
 	@Autowired
-	private ConfigRepository	configRepository;
+	private ConfigRepository		configRepository;
 
 	@Autowired
-	private ActorService		actorService;
+	private ActorService			actorService;
+
+	@Autowired
+	private AdvertisementService	advertisementService;
 
 
 	//Constructors
@@ -70,12 +74,19 @@ public class ConfigService {
 		Config config;
 		Config result;
 		Set<String> tabooWords;
+		Collection<Advertisement> advertisements;
 
 		config = this.findConfiguration();
 		tabooWords = new HashSet<String>(config.getTabooWords());
 		// Assert.isTrue(!tabooWords.contains(tabooWord) && tabooWord != null); Esto petaba todos los tests de rendimiento.
 		tabooWords.add(tabooWord);
 		config.setTabooWords(tabooWords);
+
+		advertisements = this.advertisementService.findAll();
+
+		for (final Advertisement a : advertisements)
+			this.advertisementService.isTaboo(tabooWord, a);
+
 		result = this.save(config);
 
 		return result;
