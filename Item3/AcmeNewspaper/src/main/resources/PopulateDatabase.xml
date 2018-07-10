@@ -160,6 +160,7 @@
 				<ref bean="newspaper6"/>
 				<ref bean="newspaper7"/>
 				<ref bean="newspaper9"/>
+				<ref bean="newspaper8"/>
 			</list>	
 		</property>
 		<property name="articles">
