@@ -222,16 +222,16 @@ public class ArticleService {
 	}
 
 	public Boolean isTaboo(final String string, final Article article) {
-		final Boolean result = false;
+		Boolean result = false;
 		String lower;
 		if (string != null) {
 			lower = string.toLowerCase();
 
-			for (final String s : this.configService.findConfiguration().getTabooWords())
-				if (lower.contains(s)) {
-					article.setTaboo(true);
-					this.articleRepository.save(article);
-				}
+			if (article.getTitle().contains(lower) || article.getSummary().contains(lower) || article.getText().contains(lower)) {
+				article.setTaboo(true);
+				result = true;
+				this.articleRepository.save(article);
+			}
 		}
 		return result;
 	}

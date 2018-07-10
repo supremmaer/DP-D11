@@ -171,16 +171,16 @@ public class NewspaperService {
 	}
 
 	public Boolean isTaboo(final String string, final Newspaper newspaper) {
-		final Boolean result = false;
+		Boolean result = false;
 		String lower;
 		if (string != null) {
 			lower = string.toLowerCase();
 
-			for (final String s : this.configService.findConfiguration().getTabooWords())
-				if (lower.contains(s)) {
-					newspaper.setTaboo(true);
-					this.newspaperRepository.save(newspaper);
-				}
+			if (newspaper.getTitle().contains(lower) || newspaper.getDescription().contains(lower)) {
+				newspaper.setTaboo(true);
+				result = true;
+				this.newspaperRepository.save(newspaper);
+			}
 		}
 		return result;
 	}

@@ -109,20 +109,19 @@ public class AdvertisementService {
 	//Other business methods ----------------------------------------------------
 
 	public Boolean isTaboo(final String string, final Advertisement advertisement) {
-		final Boolean result = false;
+		Boolean result = false;
 		String lower;
 		if (string != null) {
 			lower = string.toLowerCase();
 
-			for (final String s : this.configService.findConfiguration().getTabooWords())
-				if (lower.contains(s)) {
-					advertisement.setTaboo(true);
-					this.advertisementRepository.save(advertisement);
-				}
+			if (advertisement.getTitle().contains(lower)) {
+				advertisement.setTaboo(true);
+				result = true;
+				this.advertisementRepository.save(advertisement);
+			}
 		}
 		return result;
 	}
-
 	public Collection<Advertisement> findTaboo() {
 		Collection<Advertisement> result;
 

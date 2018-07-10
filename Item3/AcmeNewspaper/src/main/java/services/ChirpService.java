@@ -120,16 +120,16 @@ public class ChirpService {
 	}
 
 	public Boolean isTaboo(final String string, final Chirp chirp) {
-		final Boolean result = false;
+		Boolean result = false;
 		String lower;
 		if (string != null) {
 			lower = string.toLowerCase();
 
-			for (final String s : this.configService.findConfiguration().getTabooWords())
-				if (lower.contains(s)) {
-					chirp.setContainsTaboo(true);
-					this.chirpRepository.save(chirp);
-				}
+			if (chirp.getTitle().contains(lower) || chirp.getDescription().contains(lower)) {
+				chirp.setContainsTaboo(true);
+				result = true;
+				this.chirpRepository.save(chirp);
+			}
 		}
 		return result;
 	}
