@@ -15,7 +15,10 @@ import repositories.ConfigRepository;
 import domain.Actor;
 import domain.Administrator;
 import domain.Advertisement;
+import domain.Article;
+import domain.Chirp;
 import domain.Config;
+import domain.Newspaper;
 
 @Service
 @Transactional
@@ -30,6 +33,15 @@ public class ConfigService {
 
 	@Autowired
 	private AdvertisementService	advertisementService;
+
+	@Autowired
+	private ArticleService			articleService;
+
+	@Autowired
+	private NewspaperService		newspaperService;
+
+	@Autowired
+	private ChirpService			chirpService;
 
 
 	//Constructors
@@ -75,6 +87,9 @@ public class ConfigService {
 		Config result;
 		Set<String> tabooWords;
 		Collection<Advertisement> advertisements;
+		Collection<Newspaper> newspapers;
+		final Collection<Article> articles;
+		final Collection<Chirp> chirps;
 
 		config = this.findConfiguration();
 		tabooWords = new HashSet<String>(config.getTabooWords());
@@ -83,9 +98,20 @@ public class ConfigService {
 		config.setTabooWords(tabooWords);
 
 		advertisements = this.advertisementService.findAll();
-
+		newspapers = this.newspaperService.findAll();
+		articles = this.articleService.findAll();
+		chirps = this.chirpService.findAll();
 		for (final Advertisement a : advertisements)
 			this.advertisementService.isTaboo(tabooWord, a);
+
+		for (final Newspaper n : newspapers)
+			this.newspaperService.isTaboo(tabooWord, n);
+
+		for (final Article a : articles)
+			this.articleService.isTaboo(tabooWord, a);
+
+		for (final Chirp c : chirps)
+			this.chirpService.isTaboo(tabooWord, c);
 
 		result = this.save(config);
 

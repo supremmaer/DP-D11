@@ -166,7 +166,7 @@ public class ArticleService {
 		result = this.articleRepository.save(article);
 		return result;
 	}
-	
+
 	public Article findOne(final int articleId) {
 		Article result;
 
@@ -219,5 +219,20 @@ public class ArticleService {
 
 		return result;
 
+	}
+
+	public Boolean isTaboo(final String string, final Article article) {
+		final Boolean result = false;
+		String lower;
+		if (string != null) {
+			lower = string.toLowerCase();
+
+			for (final String s : this.configService.findConfiguration().getTabooWords())
+				if (lower.contains(s)) {
+					article.setTaboo(true);
+					this.articleRepository.save(article);
+				}
+		}
+		return result;
 	}
 }

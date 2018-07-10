@@ -170,6 +170,21 @@ public class NewspaperService {
 		return newspapers;
 	}
 
+	public Boolean isTaboo(final String string, final Newspaper newspaper) {
+		final Boolean result = false;
+		String lower;
+		if (string != null) {
+			lower = string.toLowerCase();
+
+			for (final String s : this.configService.findConfiguration().getTabooWords())
+				if (lower.contains(s)) {
+					newspaper.setTaboo(true);
+					this.newspaperRepository.save(newspaper);
+				}
+		}
+		return result;
+	}
+
 	public Collection<Newspaper> findByCreditCardID(final int cardID) {
 		return this.newspaperRepository.findByCreditCardID(cardID);
 	}

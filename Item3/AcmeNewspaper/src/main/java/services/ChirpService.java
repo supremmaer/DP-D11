@@ -118,6 +118,22 @@ public class ChirpService {
 
 		return result;
 	}
+
+	public Boolean isTaboo(final String string, final Chirp chirp) {
+		final Boolean result = false;
+		String lower;
+		if (string != null) {
+			lower = string.toLowerCase();
+
+			for (final String s : this.configService.findConfiguration().getTabooWords())
+				if (lower.contains(s)) {
+					chirp.setContainsTaboo(true);
+					this.chirpRepository.save(chirp);
+				}
+		}
+		return result;
+	}
+
 	public Collection<Chirp> findByTabooWords() {
 		final Collection<Chirp> result;
 		Actor principal;
