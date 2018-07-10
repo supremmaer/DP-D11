@@ -45,7 +45,7 @@
 	
 	<acme:submit name="save" code="article.save"/>
 	
-	<acme:cancel url="${requestURI}" code="article.cancel"/>
+	<acme:cancel url="newspaper/display.do?newspaperId=${newspaperId}" code="article.cancel"/>
 	
 	</form:form>
 	
