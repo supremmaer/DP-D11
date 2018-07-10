@@ -1,3 +1,4 @@
+
 package forms;
 
 import java.util.Date;
@@ -6,6 +7,7 @@ import javax.persistence.Column;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 import javax.validation.constraints.AssertTrue;
+import javax.validation.constraints.Pattern;
 import javax.validation.constraints.Size;
 
 import org.hibernate.validator.constraints.Email;
@@ -74,6 +76,7 @@ public class ActorForm {
 		this.email = email;
 	}
 
+	@Pattern(regexp = "^\\+?\\d+$")
 	public String getPhone() {
 		return this.phone;
 	}
