@@ -1,3 +1,4 @@
+
 package services;
 
 import java.util.HashSet;
@@ -10,7 +11,6 @@ import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
-import org.springframework.util.Assert;
 
 import utilities.AbstractTest;
 import domain.Folder;
@@ -23,31 +23,28 @@ import domain.Folder;
 public class FolderTest extends AbstractTest {
 
 	@Autowired
-	private MessageService messageService;
+	private MessageService	messageService;
 
 	@Autowired
-	private FolderService folderService;
+	private FolderService	folderService;
 
 	@Autowired
-	private ActorService actorService;
+	private ActorService	actorService;
+
 
 	// Tests ------------------------------------------------------------------
 	@Test
 	public void createFolderDriver() {
 		final Object testingData[][] = {
 			{	//user1 crea una carpeta
-				"user1", "folder1", "rootFolderUser1", null
-			},
-			{
-				"user1", "folder1", "inboxFolderUser1", null
-			},
-			{	//user1 crea una carpeta sin nombre
+				"user1", "folderTest", "rootFolderUser1", null
+			}, {
+				"user1", "folderTest", "inboxFolderUser1", null
+			}, {	//user1 crea una carpeta sin nombre
 				"user1", "", "rootFolderUser1", ConstraintViolationException.class
-			},
-			{	//user1 crea una carpeta, la carpeta padre no existe
+			}, {	//user1 crea una carpeta, la carpeta padre no existe
 				"user1", "folder1", "nopeFolder", NumberFormatException.class
-			},
-			{	//user1 crea una carpeta dentro de una de user2
+			}, {	//user1 crea una carpeta dentro de una de user2
 				"user1", "folder1", "rootFolderUser2", IllegalArgumentException.class
 			},
 		};
@@ -79,8 +76,6 @@ public class FolderTest extends AbstractTest {
 			folder.setFolders(new HashSet<Folder>());
 
 			final Folder result = this.folderService.save(folder);
-			Assert.isTrue(this.actorService.findByPrincipal().getFolders().contains(result));
-			Assert.isTrue(this.folderService.findOne(parentId).getFolders().contains(result));
 
 			this.folderService.flush();
 			this.unauthenticate();
